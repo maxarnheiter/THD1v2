@@ -1,0 +1,204 @@
+<Project>
+  <Name>THD1v2</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Editor</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>GameEditor</Name>
+        <Access>Public</Access>
+        <Location left="856" top="460" />
+        <Size width="305" height="188" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public static Map currentMap</Member>
+        <Member type="Field">public static Floor currentFloor</Member>
+        <Member type="Field">public static Vector2 currentMousePosition</Member>
+        <Member type="Field">public static Dictionary&lt;string, Texture2D&gt; sprites</Member>
+        <Member type="Field">public static List&lt;KeyValuePair&lt;string, Texture2D&gt;&gt; spriteSelection</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameEditorUI</Name>
+        <Access>Public</Access>
+        <Location left="377" top="270" />
+        <Size width="180" height="137" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static UISelection selection</Member>
+        <Member type="Method">private static void SelectionUI()</Member>
+        <Member type="Method">private static void SelectionSpecificUI()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>EditorEnums</Name>
+        <Access>Public</Access>
+        <Location left="1290" top="921" />
+        <Size width="219" height="101" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public enumeration UISelection</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>GameEditorWindow</Name>
+        <Access>Public</Access>
+        <Location left="795" top="38" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void Init()</Member>
+        <Member type="Method">public void OnEnable()</Member>
+        <Member type="Method">public void OnGUI()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SceneInputHandler</Name>
+        <Access>Public</Access>
+        <Location left="1261" top="251" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void OnSceneGUI()</Member>
+        <Member type="Method">private static Vector2 GetMousePosition()</Member>
+        <Member type="Method">private static void OnClick()</Member>
+        <Member type="Method">private static void OnMove()</Member>
+        <Member type="Method">private static void OnRepaint()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PrefabsUI</Name>
+        <Access>Public</Access>
+        <Location left="207" top="460" />
+        <Size width="162" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void Display()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SpritesUI</Name>
+        <Access>Public</Access>
+        <Location left="544" top="460" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static Vector2 size = Vector2.zero</Member>
+        <Member type="Field">static int buttonPadding = 12</Member>
+        <Member type="Method">public static void Display()</Member>
+        <Member type="Method">public static void SidebarUI()</Member>
+        <Member type="Method">public static void ScrollviewUI()</Member>
+        <Member type="Method">public static void DisplaySpriteButton()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>PrefabsWizard</Name>
+        <Access>Public</Access>
+        <Location left="452" top="756" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private List&lt;KeyValuePair&lt;string, Texture2D&gt;&gt; selectionList</Member>
+        <Member type="Field">private KeyValuePair&lt;string, Texture2D&gt; selectionNode</Member>
+        <Member type="Field">private int selectionIndex</Member>
+        <Member type="Method">private static void Init()</Member>
+        <Member type="Method">private void OnGUI()</Member>
+        <Member type="Method">private void Make()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SpriteLoader</Name>
+        <Access>Public</Access>
+        <Location left="698" top="756" />
+        <Size width="265" height="96" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static Dictionary&lt;string, Texture2D&gt; LoadSprites()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Dependency" first="3" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>982</X>
+          <Y>65</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1341</X>
+          <Y>225</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="3" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>770</X>
+          <Y>61</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>458</X>
+          <Y>245</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="1" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>339</X>
+          <Y>297</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>301</X>
+          <Y>435</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="1" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>592</X>
+          <Y>292</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>627</X>
+          <Y>427</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="6" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>731</X>
+          <Y>482</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="6" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>608</X>
+          <Y>701</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>535</X>
+          <Y>731</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="6" second="8">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>652</X>
+          <Y>701</Y>
+        </BendPoint>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

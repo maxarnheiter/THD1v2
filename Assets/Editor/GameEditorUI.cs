@@ -10,6 +10,9 @@ public static class GameEditorUI
 	public static void Display(float width)
 	{
 		SelectionUI ();
+		
+		EditorGUILayout.Space();
+		
 		SelectionSpecifcUI (width);
 	}
 

@@ -3,6 +3,50 @@ guid: 8f30034d39df6784dbf90b27a4991b6e
 TextureImporter:
   fileIDToRecycleName:
     21300000: city_1
+    21300002: city_1_0
+    21300004: city_1_1
+    21300006: city_1_2
+    21300008: city_1_3
+    21300010: city_1_4
+    21300012: city_1_5
+    21300014: city_1_6
+    21300016: city_1_7
+    21300018: city_1_8
+    21300020: city_1_9
+    21300022: city_1_10
+    21300024: city_1_11
+    21300026: city_1_12
+    21300028: city_1_13
+    21300030: city_1_14
+    21300032: city_1_15
+    21300034: city_1_16
+    21300036: city_1_17
+    21300038: city_1_18
+    21300040: city_1_19
+    21300042: city_1_20
+    21300044: city_1_21
+    21300046: city_1_22
+    21300048: city_1_23
+    21300050: city_1_24
+    21300052: city_1_25
+    21300054: city_1_26
+    21300056: city_1_27
+    21300058: city_1_28
+    21300060: city_1_29
+    21300062: city_1_30
+    21300064: city_1_31
+    21300066: city_1_32
+    21300068: city_1_33
+    21300070: city_1_34
+    21300072: city_1_35
+    21300074: city_1_36
+    21300076: city_1_37
+    21300078: city_1_38
+    21300080: city_1_39
+    21300082: city_1_40
+    21300084: city_1_41
+    21300086: city_1_42
+    21300088: city_1_43
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -43,6 +87,446 @@ TextureImporter:
   textureType: 5
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: city_1_0
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 2687
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_1
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 2623
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_2
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 2559
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_3
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 2495
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_4
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 2655
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_5
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 2591
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_6
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 2527
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_7
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 2463
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_8
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 2463
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_9
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 2527
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_10
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 2591
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_11
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 2655
+        width: 64
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_12
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2432
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_13
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 2432
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_14
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 2432
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_15
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 2432
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_16
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2432
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_17
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 2432
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_18
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 2432
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_19
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 2432
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_20
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2400
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_21
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 2400
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_22
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 2400
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_23
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 2400
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_24
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2400
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_25
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2368
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_26
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 2368
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_27
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 2368
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_28
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 2368
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_29
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2368
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_30
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_31
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_32
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_33
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_34
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_35
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2304
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_36
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 2304
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_37
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 2304
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_38
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 2304
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_39
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2304
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_40
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 2304
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_41
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 2304
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_42
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 2304
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: city_1_43
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2304
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
