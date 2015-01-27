@@ -42,7 +42,7 @@ public static class SceneInputHandler
 		}
 	}
 	
-	private static Vector2 GetMousePosition(SceneView view, Event current)
+	static Vector2 GetMousePosition(SceneView view, Event current)
 	{
 		var adjustedMousePosition = new Vector2(current.mousePosition.x, view.camera.pixelHeight - current.mousePosition.y);
 		var rawMousePosition = view.camera.ScreenToWorldPoint(adjustedMousePosition);
@@ -50,17 +50,17 @@ public static class SceneInputHandler
 		return new Vector2(Mathf.Floor(rawMousePosition.x) + 1f, Mathf.Floor(rawMousePosition.y));
 	}
 	
-	private static void OnClick(Vector2 position)
+	static void OnClick(Vector2 position)
 	{
 		
 	}
 	
-	private static void OnMove(Vector2 position)
+	static void OnMove(Vector2 position)
 	{
 	
 	}
 	
-	private static void OnRepaint()
+	static void OnRepaint()
 	{
 	
 	}
