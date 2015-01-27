@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public static class GameEditor 
 {
-	public Map currentMap;
+	public static Map currentMap;
 	
-	public Floor currentFloor;
+	public static Floor currentFloor;
 	
-	public Vector2 currentMousePosition;
+	public static Vector2 currentMousePosition;
+
+	public static Dictionary<string, Texture2D> sprites;
 	
 }

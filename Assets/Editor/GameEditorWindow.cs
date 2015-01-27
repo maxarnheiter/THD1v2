@@ -19,6 +19,6 @@ public class GameEditorWindow : EditorWindow
 	
 	void OnGUI()
 	{
-		GameEditorUI.OnGUI();
+		GameEditorUI.Display(this.position.width);
 	}
 }
