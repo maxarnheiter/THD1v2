@@ -19,19 +19,21 @@ public static class GameEditorUI
 	static void SelectionUI()
 	{
 		EditorGUILayout.BeginHorizontal ();
+		GUILayout.FlexibleSpace();
 
-		if (selection == UISelection.Sprites)
-			GUI.enabled = false;
-		if (GUILayout.Button ("Sprites UI"))
-			selection = UISelection.Sprites;
-		GUI.enabled = true;
-
-		if (selection == UISelection.Prefabs)
-			GUI.enabled = false;
-		if (GUILayout.Button ("Prefabs UI"))
-			selection = UISelection.Prefabs;
-		GUI.enabled = true;
-
+			if (selection == UISelection.Sprites)
+				GUI.enabled = false;
+			if (GUILayout.Button ("Sprites UI", GUILayout.Width (100f)))
+				selection = UISelection.Sprites;
+			GUI.enabled = true;
+	
+			if (selection == UISelection.Prefabs)
+				GUI.enabled = false;
+			if (GUILayout.Button ("Prefabs UI", GUILayout.Width (100f)))
+				selection = UISelection.Prefabs;
+			GUI.enabled = true;
+		
+		GUILayout.FlexibleSpace();
 		EditorGUILayout.EndHorizontal ();
 	}
 

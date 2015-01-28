@@ -11,7 +11,7 @@ public static class SpritesUI
 	public static void Display(float width)
 	{
 		var sidebarWidth = 250;
-		var scrollviewWidth = width - sidebarWidth;
+		var scrollviewWidth = width - sidebarWidth - 10;
 
 		EditorGUILayout.BeginHorizontal ();
 
@@ -29,11 +29,15 @@ public static class SpritesUI
 	static void SidebarUI(float width)
 	{
 		if (GUILayout.Button ("Load Sprites"))
-			GameEditor.sprites = SpriteLoader.LoadSprites ();
+			GameEditor.LoadSprites();
 
-		GUILayout.Label ("Sprites loaded: " + ((GameEditor.sprites == null) ? "0" : GameEditor.sprites.Count().ToString()));
+		GUILayout.Label ("Sprite objects loaded: " + ((GameEditor.spriteObjects == null) ? "0" : GameEditor.spriteObjects.Count().ToString()));
+
+		GUILayout.Label ("Sprite textures loaded: " + ((GameEditor.spriteTextures == null) ? "0" : GameEditor.spriteTextures.Count().ToString()));
 		
 		GUILayout.Label ("Sprites selected: " + ((GameEditor.spriteSelection == null) ? "0" : GameEditor.spriteSelection.Count().ToString()));
+		
+		EditorGUILayout.BeginHorizontal();
 		
 		if(GameEditor.spriteSelection == null || GameEditor.spriteSelection.Count <= 0)
 			GUI.enabled = false;
@@ -47,22 +51,25 @@ public static class SpritesUI
 		{
 		 	var wizard =  new PrefabWizard(GameEditor.spriteSelection);
 		 	wizard.Show();
+		 	GameEditor.spriteSelection = null;
 		 }
 		GUI.enabled = true;
+		
+		EditorGUILayout.EndHorizontal();
 	}
 
 	static void ScrollviewUI(float width)
 	{
-		if(GameEditor.sprites == null)
+		if(GameEditor.spriteTextures == null)
 			return;
-		if(GameEditor.sprites.Count <= 0)
+		if(GameEditor.spriteTextures.Count <= 0)
 			return;
 	
 		size = EditorGUILayout.BeginScrollView (size);
 		int currentWidth = 0;
 		
 		EditorGUILayout.BeginHorizontal();
-		foreach(var spriteKVP in GameEditor.sprites)
+		foreach(var spriteKVP in GameEditor.spriteTextures)
 		{
 			if(currentWidth >= width)
 			{

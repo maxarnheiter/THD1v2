@@ -3,14 +3,12 @@ using System.Collections;
 
 public class Prefab : MonoBehaviour 
 {
-
-	void Start () 
-	{
+	public int id;
+	public int setId;
 	
-	}
+	public int spriteWidth;
+	public int spriteHeight;
 	
-	void Update () 
-	{
-	
-	}
+	public PrefabCategory prefabCategory;
+	public PrefabColor prefabColor;
 }
