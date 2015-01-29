@@ -5,6 +5,7 @@ using System.Collections;
 public enum UISelection
 {
 	Sprites,
-	Prefabs
+	Prefabs, 
+	Map
 }
 

@@ -14,6 +14,8 @@ public static class GameEditor
 	
 	public static List<KeyValuePair<string, Texture2D>> spriteSelection;
 	
+	public static Prefab currentPrefab;
+	
 	public static void LoadPrefabs()
 	{
 		prefabs = PrefabLoader.LoadPrefabs();

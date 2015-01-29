@@ -32,6 +32,12 @@ public static class GameEditorUI
 			if (GUILayout.Button ("Prefabs UI", GUILayout.Width (100f)))
 				selection = UISelection.Prefabs;
 			GUI.enabled = true;
+			
+			if (selection == UISelection.Map)
+				GUI.enabled = false;
+			if (GUILayout.Button ("Map UI", GUILayout.Width (100f)))
+				selection = UISelection.Map;
+			GUI.enabled = true;
 		
 		GUILayout.FlexibleSpace();
 		EditorGUILayout.EndHorizontal ();
@@ -46,6 +52,9 @@ public static class GameEditorUI
 			break;
 			case UISelection.Prefabs:
 				PrefabsUI.Display(width);
+			break;
+			case UISelection.Map:
+				MapUI.Display(width);
 			break;
 		}
 	}

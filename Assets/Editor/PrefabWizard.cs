@@ -199,6 +199,7 @@ public class PrefabWizard : EditorWindow
 		//Prefab Component
 		var prefab = newObject.AddComponent<Prefab>();
 		prefab.id = nextPrefabId;
+		prefab.spriteName = sprite.name;
 		prefab.spriteWidth = (int)sprite.rect.width;
 		prefab.spriteHeight = (int)sprite.rect.height;
 		prefab.prefabCategory = nextPrefabCategory;
