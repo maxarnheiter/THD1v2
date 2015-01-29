@@ -16,6 +16,8 @@ public static class GameEditor
 	
 	public static Prefab currentPrefab;
 	
+	public static EditorClickAction clickAction;
+	
 	public static void LoadPrefabs()
 	{
 		prefabs = PrefabLoader.LoadPrefabs();

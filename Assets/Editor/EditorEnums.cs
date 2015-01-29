@@ -9,3 +9,10 @@ public enum UISelection
 	Map
 }
 
+public enum EditorClickAction
+{
+	None, 
+	Draw, 
+	Erase	
+}
+
