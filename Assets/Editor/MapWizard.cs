@@ -124,6 +124,16 @@ public class MapWizard : EditorWindow
 		hasError = false;	
 		errorText = new List<string>();
 		
+		for(int i = highestFloor; i >= lowestFloor; i--)
+		{
+			string layerName = "Floor " + i.ToString();
+			if(LayerMask.NameToLayer(layerName) == -1)
+			{
+				hasError = true;
+				errorText.Add ("Missing Layer for " + layerName);
+			}
+		}
+		
 		if(highestFloor <= lowestFloor || lowestFloor >= highestFloor)
 		{
 			hasError = true;

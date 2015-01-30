@@ -19,24 +19,24 @@ public static class SceneInputHandler
 		{	
 			case EventType.MouseUp: 
 			{
-				OnClick(GetMousePosition(sceneView, current));
+				SceneClickHandler.OnClick(GetMousePosition(sceneView, current));
 				current.Use ();
 				break;
 			}
 			case EventType.MouseDrag:
 			{
-				OnClick(GetMousePosition(sceneView, current));
+				SceneClickHandler.OnClick(GetMousePosition(sceneView, current));
 				current.Use();
 				break;
 			}
 			case EventType.MouseMove: 
 			{
-				OnMove(GetMousePosition(sceneView, current));
+				ScenePreviewHandler.OnMove(GetMousePosition(sceneView, current));
 				break;
 			}
 			case EventType.Repaint: 
 			{
-				OnRepaint();
+				//TODO
 				break;
 			}
 		}
@@ -49,20 +49,6 @@ public static class SceneInputHandler
 		
 		return new Vector2(Mathf.Floor(rawMousePosition.x) + 1f, Mathf.Floor(rawMousePosition.y));
 	}
-	
-	static void OnClick(Vector2 position)
-	{
-		
-	}
-	
-	static void OnMove(Vector2 position)
-	{
-	
-	}
-	
-	static void OnRepaint()
-	{
-	
-	}
+
 	
 }
