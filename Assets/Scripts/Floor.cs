@@ -10,6 +10,11 @@ public class Floor : MonoBehaviour
 	{
 		get { return (height * -1); }
 	}
+
+	public string sortingLayerName
+	{
+		get { return ("Floor " + this.height.ToString ()); }
+	}
 	
 	void Start () 
 	{

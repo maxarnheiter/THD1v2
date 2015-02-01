@@ -46,6 +46,22 @@ public class Map : MonoBehaviour
 			
 		return this.floors.Where(f => f.height == 0).FirstOrDefault();
 	}
+
+	public Floor GetFloor(int floorHeight)
+	{
+		if (floors.Count == 0)
+			return null;
+
+		Floor highest = GetHighestFloor ();
+		if (floorHeight >= highest.height)
+			return highest;
+
+		Floor lowest = GetLowestFloor();
+		if(floorHeight <= lowest.height)
+			return lowest;
+
+		return floors.Where (f => f.height == floorHeight).FirstOrDefault ();
+	}
 	
 	public Floor GetHighestFloor()
 	{

@@ -7,26 +7,30 @@ public static class MapUI
 
 	public static void Display(float width)
 	{
+		var controlsWidth = 300f;
+		var statisticsWidth = 300f;
+
 		EditorGUILayout.Space();
-		
+
 		EditorGUILayout.BeginHorizontal();
-		
+
 			EditorGUILayout.BeginVertical();
-				MapControlsUI(300);
+				MapControlsUI(controlsWidth);
 			EditorGUILayout.EndVertical();
 			
 			EditorGUILayout.BeginVertical();
-				MapStatisticsUI(300);
+				MapStatisticsUI(statisticsWidth);
 			EditorGUILayout.EndVertical();
+
+			GUILayout.Label ("", GUILayout.Width (width - controlsWidth - statisticsWidth));
 		
 		EditorGUILayout.EndHorizontal();
-		
 	}
 	
 	static void MapControlsUI(float width)
 	{
 		EditorGUILayout.Space ();
-	
+
 		EditorGUILayout.BeginHorizontal();
 		
 			if(GameEditor.currentMap != null)
@@ -56,10 +60,12 @@ public static class MapUI
 				GUI.enabled = false;
 			if(GUILayout.Button("Load From Scene", GUILayout.Width(width / 2f)))
 			{
+				GameEditor.hasMap = false;
 				Map map = GameObject.FindObjectOfType<Map>();
 				
 				if(map != null)
 				{
+					GameEditor.hasMap = true;
 					GameEditor.currentMap = map;
 					GameEditor.currentFloor = map.GetZeroFloor();
 				}
@@ -72,7 +78,17 @@ public static class MapUI
 			{
 				string path = EditorUtility.OpenFilePanel("", "", "xml");
 				if(path != null || path != "")
-					GameEditor.currentMap = MapSerializer.Load(path);
+				{
+					GameEditor.hasMap = false;
+					Map map = MapSerializer.Load(path);
+
+					if(map != null)
+					{
+						GameEditor.hasMap = true;
+						GameEditor.currentMap = map;
+						GameEditor.currentFloor = map.GetZeroFloor();
+					}
+				}
 			}
 			GUI.enabled = true;
 			

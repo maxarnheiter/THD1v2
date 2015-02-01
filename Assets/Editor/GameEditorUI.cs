@@ -45,17 +45,28 @@ public static class GameEditorUI
 
 	static void SelectionSpecifcUI(float width)
 	{
-		switch (selection) 
-		{
-			case UISelection.Sprites:
-				SpritesUI.Display(width);
-			break;
-			case UISelection.Prefabs:
-				PrefabsUI.Display(width);
-			break;
-			case UISelection.Map:
-				MapUI.Display(width);
-			break;
-		}
+		EditorGUILayout.BeginHorizontal ();
+
+			var quickbarWidth = 200f;
+			var selectionWidth = width - quickbarWidth;
+
+			switch (selection) 
+			{
+				case UISelection.Sprites:
+					SpritesUI.Display(selectionWidth);
+				break;
+				case UISelection.Prefabs:
+					PrefabsUI.Display(selectionWidth);
+				break;
+				case UISelection.Map:
+					MapUI.Display(selectionWidth);
+				break;
+			}
+
+			GUILayout.FlexibleSpace ();
+
+			QuickbarUI.Display (quickbarWidth);
+
+		EditorGUILayout.EndHorizontal ();
 	}
 }

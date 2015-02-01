@@ -60,6 +60,8 @@ public static class SpritesUI
 
 	static void ScrollviewUI(float width)
 	{
+		GUILayout.Label ("", GUILayout.Width (width));
+
 		if(GameEditor.spriteTextures == null)
 			return;
 		if(GameEditor.spriteTextures.Count <= 0)

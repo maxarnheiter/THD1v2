@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: f6a5ffc422719ac488e2a4a2fb7e6201
+guid: 99a0885a5c27a884ca1f2fe0bb48237c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: eraser
+    21300000: eraserTexture
+    21300002: eraseTexture
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -25,20 +26,20 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
-    filterMode: -1
-    aniso: 0
+    filterMode: 0
+    aniso: 1
     mipBias: -1
-    wrapMode: 0
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 8
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   alphaIsTransparency: 1
   textureType: 5
   buildTargetSettings: []

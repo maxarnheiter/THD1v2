@@ -64,6 +64,8 @@ public class PrefabsUI
 	
 	static void ScrollviewUI(float width)
 	{
+		GUILayout.Label ("", GUILayout.Width (width));
+
 		if(GameEditor.prefabs == null)
 			return;
 		if(GameEditor.prefabs.Count <= 0)
