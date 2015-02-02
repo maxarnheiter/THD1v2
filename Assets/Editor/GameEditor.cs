@@ -5,7 +5,7 @@ public static class GameEditor
 {
 	public static bool hasMap;
 	public static Map currentMap;
-	public static Floor currentFloor;
+	public static int currentFloor;
 
 	public static bool hasSprites;
 	public static Dictionary<string, Texture2D> spriteTextures;
@@ -19,6 +19,11 @@ public static class GameEditor
 	public static Prefab currentPrefab;
 	
 	public static EditorClickAction clickAction;
+	
+	public static int currentRealFloor
+	{
+		get { return currentFloor * -1; }
+	}
 
 
 	public static void LoadPrefabs()
@@ -43,18 +48,18 @@ public static class GameEditor
 
 	public static void FloorUp()
 	{
-		if (currentMap.GetHighestFloor () == currentFloor)
+		if (currentMap.highestFloor == currentFloor)
 			return;
 
-		currentFloor = currentMap.GetFloor (currentFloor.height + 1);
+		currentFloor++;
 	}
 
 	public static void FloorDown()
 	{
-		if (currentMap.GetLowestFloor () == currentFloor)
+		if (currentMap.lowestFloor == currentFloor)
 			return;
 		
-		currentFloor = currentMap.GetFloor (currentFloor.height - 1);
+		currentFloor--;
 	}
 	
 	

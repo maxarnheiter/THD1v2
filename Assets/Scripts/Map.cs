@@ -7,13 +7,16 @@ public class Map : MonoBehaviour
 
 	public string name;
 	
-	public List<Floor> floors;
-	public List<GameObject> floorObjects;
+	public Dictionary<int, Instance> instances;
+	
+	public int highestFloor;
+	public int lowestFloor;
 	
 	public Map()
 	{
-		this.floors = new List<Floor>();
-		this.floorObjects =  new List<GameObject>();
+		this.highestFloor = 10;
+		this.lowestFloor = -10;
+		this.instances =  new Dictionary<int, Instance>();
 	}
 
 	void Start () 
@@ -25,57 +28,5 @@ public class Map : MonoBehaviour
 	{
 	
 	}
-	
-	public void AddNewFloor(int newFloorHeight)
-	{
-		var newFloorObject = new GameObject();
-		var newFloor = newFloorObject.AddComponent<Floor>();
-		
-		newFloor.height = newFloorHeight;
-		newFloorObject.name = "Floor " + newFloorHeight.ToString();
-		newFloorObject.transform.parent = this.transform;
-		
-		this.floors.Add(newFloor);
-		this.floorObjects.Add(newFloorObject);
-	}
-	
-	public Floor GetZeroFloor()
-	{
-		if(floors.Count == 0)
-			return null;
-			
-		return this.floors.Where(f => f.height == 0).FirstOrDefault();
-	}
 
-	public Floor GetFloor(int floorHeight)
-	{
-		if (floors.Count == 0)
-			return null;
-
-		Floor highest = GetHighestFloor ();
-		if (floorHeight >= highest.height)
-			return highest;
-
-		Floor lowest = GetLowestFloor();
-		if(floorHeight <= lowest.height)
-			return lowest;
-
-		return floors.Where (f => f.height == floorHeight).FirstOrDefault ();
-	}
-	
-	public Floor GetHighestFloor()
-	{
-		if(floors.Count == 0)
-			return null;
-
-		return this.floors.OrderByDescending(f => f.height).FirstOrDefault();
-	}
-
-	public Floor GetLowestFloor()
-	{
-		if(floors.Count == 0)
-			return null;
-			
-		return this.floors.OrderByDescending(f => f.height).LastOrDefault();
-	}
 }

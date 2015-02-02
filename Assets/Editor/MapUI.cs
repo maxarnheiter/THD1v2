@@ -67,7 +67,7 @@ public static class MapUI
 				{
 					GameEditor.hasMap = true;
 					GameEditor.currentMap = map;
-					GameEditor.currentFloor = map.GetZeroFloor();
+					GameEditor.currentFloor = 0;
 				}
 			}
 			GUI.enabled = true;
@@ -86,7 +86,7 @@ public static class MapUI
 					{
 						GameEditor.hasMap = true;
 						GameEditor.currentMap = map;
-						GameEditor.currentFloor = map.GetZeroFloor();
+						GameEditor.currentFloor = 0;
 					}
 				}
 			}
@@ -98,13 +98,9 @@ public static class MapUI
 	static void MapStatisticsUI(float width)
 	{
 		GUILayout.Label ("Current Map: " + ((GameEditor.currentMap == null) ? "NA" : GameEditor.currentMap.name), GUILayout.Width (width));
-		GUILayout.Label ("Current Floor: " + ((GameEditor.currentFloor == null) ? "NA" : GameEditor.currentFloor.height.ToString()), GUILayout.Width (width));
+		GUILayout.Label ("Current Floor: " + ((GameEditor.currentFloor == null) ? "NA" : GameEditor.currentFloor.ToString()), GUILayout.Width (width));
+		GUILayout.Label ("Highest floor: " + ((GameEditor.currentMap == null) ? "NA" : GameEditor.currentMap.highestFloor.ToString()), GUILayout.Width (width));
+		GUILayout.Label ("Lowest floor: " + ((GameEditor.currentMap == null) ? "NA" : GameEditor.currentMap.lowestFloor.ToString()), GUILayout.Width (width));
 		
-		if(GameEditor.currentMap != null)
-		{			
-			GUILayout.Label ("Number of floors: " + GameEditor.currentMap.floors.Count, GUILayout.Width (width));
-			GUILayout.Label ("Highest floor: " + ((GameEditor.currentMap.GetHighestFloor() == null) ? "NA" : GameEditor.currentMap.GetHighestFloor().height.ToString()), GUILayout.Width (width));
-			GUILayout.Label ("Lowest floor: " + ((GameEditor.currentMap.GetLowestFloor() == null) ? "NA" : GameEditor.currentMap.GetLowestFloor().height.ToString()), GUILayout.Width (width));
-		}
 	}
 }

@@ -8,9 +8,6 @@ public class MapWizard : EditorWindow
 
 	string newMapName;
 	
-	int highestFloor = 0;
-	int lowestFloor = 0;
-	
 	bool hasError;
 	List<string> errorText;
 	
@@ -25,8 +22,6 @@ public class MapWizard : EditorWindow
 	public MapWizard()
 	{
 		this.newMapName = "New Map";
-		this.highestFloor = 3;
-		this.lowestFloor = -3;
 		this.errorText = new List<string>();
 	}
 	
@@ -37,16 +32,6 @@ public class MapWizard : EditorWindow
 		EditorGUILayout.BeginHorizontal();
 			GUILayout.Label("Map Name:", GUILayout.Width (100));
 			newMapName = EditorGUILayout.TextField(newMapName, GUILayout.Width (150f));
-		EditorGUILayout.EndHorizontal();
-		
-		EditorGUILayout.BeginHorizontal();
-			GUILayout.Label("Highest Floor:", GUILayout.Width (100));
-			highestFloor = EditorGUILayout.IntField(highestFloor, GUILayout.Width (150f));
-		EditorGUILayout.EndHorizontal();
-		
-		EditorGUILayout.BeginHorizontal();
-			GUILayout.Label("Lowest Floor:", GUILayout.Width (100));
-			lowestFloor = EditorGUILayout.IntField(lowestFloor, GUILayout.Width (150f));
 		EditorGUILayout.EndHorizontal();
 		
 		EditorGUILayout.Space();
@@ -110,11 +95,6 @@ public class MapWizard : EditorWindow
 		map.name = newMapName;
 		newObject.name = newMapName;
 		
-		for(int i = highestFloor; i >= lowestFloor; i--)
-		{
-			map.AddNewFloor(i);
-		}
-		
 		hasCompleted = true;
 		completionText = "Sucessfuly finished creating new map.";
 	}
@@ -123,22 +103,6 @@ public class MapWizard : EditorWindow
 	{
 		hasError = false;	
 		errorText = new List<string>();
-		
-		for(int i = highestFloor; i >= lowestFloor; i--)
-		{
-			string layerName = "Floor " + i.ToString();
-			if(LayerMask.NameToLayer(layerName) == -1)
-			{
-				hasError = true;
-				errorText.Add ("Missing Layer for " + layerName);
-			}
-		}
-		
-		if(highestFloor <= lowestFloor || lowestFloor >= highestFloor)
-		{
-			hasError = true;
-			errorText.Add("Highest floor must be greater than lowest floor.");
-		}
 		
 		if(newMapName == "" || newMapName == null)
 		{

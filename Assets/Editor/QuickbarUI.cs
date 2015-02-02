@@ -78,7 +78,7 @@ public static class QuickbarUI
 			
 			GUILayout.FlexibleSpace ();
 			
-			GUILayout.Label ("Floor " + ((GameEditor.hasMap == true) ? GameEditor.currentFloor.height.ToString() : "NA"));
+			GUILayout.Label ("Floor " + ((GameEditor.hasMap == true) ? GameEditor.currentFloor.ToString() : "NA"));
 			
 			GUILayout.FlexibleSpace ();
 		

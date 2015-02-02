@@ -11,7 +11,7 @@
         <Size width="305" height="365" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public static Map currentMap</Member>
-        <Member type="Field">public static Floor currentFloor</Member>
+        <Member type="Field">public static int currentFloor</Member>
         <Member type="Field">public static Vector2 currentMousePosition</Member>
         <Member type="Field">public static List&lt;KeyValuePair&lt;string, Texture2D&gt;&gt; spriteSelection</Member>
         <Member type="Field">public static Dictionary&lt;string, Texture2D&gt; spriteTextures</Member>
@@ -21,6 +21,9 @@
         <Member type="Field">public static EditorClickAction clickAction</Member>
         <Member type="Method">public static void LoadPrefabs()</Member>
         <Member type="Method">public static void LoadSprites()</Member>
+        <Member type="Method">public static void FloorUp()</Member>
+        <Member type="Method">public static void FloorDown()</Member>
+        <Member type="Property">public static int currntRealFloor { get; set; }</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -58,8 +61,8 @@
       <Entity type="Class">
         <Name>SceneInputHandler</Name>
         <Access>Public</Access>
-        <Location left="1598" top="107" />
-        <Size width="162" height="128" />
+        <Location left="1470" top="180" />
+        <Size width="186" height="128" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public static void OnSceneGUI()</Member>
         <Member type="Method">private static Vector2 GetMousePosition()</Member>
@@ -150,19 +153,20 @@
         <Name>EditorIcons</Name>
         <Access>Public</Access>
         <Location left="276" top="17" />
-        <Size width="219" height="145" />
+        <Size width="219" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public static Texture2D pencilIcon</Member>
         <Member type="Field">public static Texture2D eraserIcon</Member>
         <Member type="Field">public static Texture2D upIcon</Member>
         <Member type="Field">public static Texture2D downIcon</Member>
+        <Member type="Field">public static Texture2D eraserTexture</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>MapUI</Name>
         <Access>Public</Access>
         <Location left="401" top="708" />
-        <Size width="218" height="135" />
+        <Size width="207" height="135" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public static void Display()</Member>
         <Member type="Method">private static void MapControlsUI()</Member>
@@ -186,8 +190,6 @@
         <Size width="167" height="265" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private int newMapName</Member>
-        <Member type="Field">private int highestFloor</Member>
-        <Member type="Field">private int lowestFloor</Member>
         <Member type="Field">private bool hasError</Member>
         <Member type="Field">private List&lt;string&gt; errorText</Member>
         <Member type="Field">private bool hasCompleted</Member>
@@ -203,25 +205,26 @@
         <Location left="156" top="1013" />
         <Size width="110" height="60" />
       </Entity>
-      <Entity type="Comment">
-        <Text>       Floor</Text>
-        <Location left="156" top="1105" />
-        <Size width="107" height="59" />
-      </Entity>
       <Entity type="Class">
         <Name>ScenePreviewHandler</Name>
         <Access>Public</Access>
-        <Location left="1598" top="473" />
-        <Size width="183" height="126" />
+        <Location left="1601" top="377" />
+        <Size width="183" height="204" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">private static GameObject previewObject</Member>
+        <Member type="Field">private static SpriteRenderer priviewRenderer</Member>
+        <Member type="Field">private static int eraserSprite</Member>
         <Member type="Method">public static void OnMove()</Member>
+        <Member type="Method">private static void CreatePreviewObject()</Member>
+        <Member type="Method">private static void CreateEraserSprite()</Member>
+        <Member type="Method">private void UpdatePreviewObject()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>SceneClickHandler</Name>
         <Access>Public</Access>
-        <Location left="1598" top="330" />
-        <Size width="186" height="127" />
+        <Location left="1356" top="377" />
+        <Size width="186" height="115" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public static void OnClick()</Member>
         <Modifier>None</Modifier>
@@ -231,25 +234,32 @@
         <Location left="1093" top="10" />
         <Size width="127" height="50" />
       </Entity>
+      <Entity type="Class">
+        <Name>QuickbarUI</Name>
+        <Access>Public</Access>
+        <Location left="557" top="498" />
+        <Size width="162" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void Display()</Member>
+        <Member type="Method">private static void ClickActionUI()</Member>
+        <Member type="Method">private static void MapFloorsUI()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Dependency" first="3" second="4">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
+        <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
           <X>1263</X>
           <Y>130</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1568</X>
-          <Y>130</Y>
+          <X>1562</X>
+          <Y>155</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="3" second="1">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -262,8 +272,6 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="1" second="5">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -276,8 +284,6 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="1" second="6">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -290,8 +296,6 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="6" second="0">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -304,8 +308,6 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="6" second="7">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -318,6 +320,8 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="5" second="0">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -330,6 +334,8 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="0" second="8">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -342,6 +348,8 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="0" second="9">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -354,6 +362,8 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="7" second="0">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -374,18 +384,14 @@
         <EndOrientation>Horizontal</EndOrientation>
       </Relationship>
       <Relationship type="Dependency" first="1" second="13">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>645</X>
-          <Y>328</Y>
+          <X>646</X>
+          <Y>320</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="13" second="14">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -398,8 +404,6 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="13" second="15">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -412,12 +416,10 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Dependency" first="13" second="0">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>663</X>
+          <X>652</X>
           <Y>766</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
@@ -429,39 +431,27 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
       </Relationship>
-      <Relationship type="Comment" first="17" second="15">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
+      <Relationship type="Dependency" first="4" second="18">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1456</X>
+          <Y>352</Y>
+        </BendPoint>
       </Relationship>
-      <Relationship type="Dependency" first="4" second="19">
-        <Label>
-        </Label>
+      <Relationship type="Dependency" first="4" second="17">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1698</X>
-          <Y>260</Y>
+          <X>1583</X>
+          <Y>333</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1698</X>
-          <Y>305</Y>
+          <X>1687</X>
+          <Y>350</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Dependency" first="4" second="18">
-        <Label>
-        </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>1792</X>
-          <Y>133</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>1842</X>
-          <Y>497</Y>
-        </BendPoint>
-      </Relationship>
-      <Relationship type="Comment" first="20" second="3">
+      <Relationship type="Comment" first="19" second="3">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -469,32 +459,56 @@
           <Y>82</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Dependency" first="19" second="0">
-        <Label>
-        </Label>
+      <Relationship type="Dependency" first="18" second="0">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1571</X>
-          <Y>453</Y>
+          <X>1329</X>
+          <Y>476</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1002</X>
-          <Y>681</Y>
+          <X>996</X>
+          <Y>678</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Dependency" first="18" second="0">
-        <Label>
-        </Label>
+      <Relationship type="Dependency" first="17" second="0">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1503</X>
-          <Y>478</Y>
+          <X>1575</X>
+          <Y>505</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
           <X>1028</X>
           <Y>683</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="1" second="20">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>733</X>
+          <Y>336</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>631</X>
+          <Y>473</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Dependency" first="20" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>632</X>
+          <Y>670</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>701</X>
+          <Y>727</Y>
         </BendPoint>
       </Relationship>
     </Relationships>
@@ -544,40 +558,26 @@
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Floor</Name>
-        <Access>Public</Access>
-        <Location left="343" top="545" />
-        <Size width="191" height="145" />
-        <Collapsed>False</Collapsed>
-        <Member type="Field">public int height</Member>
-        <Member type="Property">public int realHeight { get; set; }</Member>
-        <Member type="Method">private void Start()</Member>
-        <Member type="Method">private void Update()</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
         <Name>Instance</Name>
         <Access>Public</Access>
-        <Location left="32" top="296" />
+        <Location left="324" top="493" />
         <Size width="204" height="98" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">Map map</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Map</Name>
         <Access>Public</Access>
-        <Location left="92" top="510" />
-        <Size width="163" height="230" />
+        <Location left="32" top="493" />
+        <Size width="163" height="264" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public string name</Member>
-        <Member type="Field">public List&lt;Floor&gt; floors</Member>
-        <Member type="Field">public List&lt;GameObject&gt; floorObjects</Member>
+        <Member type="Field">public List&lt;Instance&gt; instances</Member>
+        <Member type="Field">int highestFloor = 10</Member>
+        <Member type="Field">int lowestFloor = -10</Member>
         <Member type="Method">private void Start()</Member>
         <Member type="Method">private void Update()</Member>
-        <Member type="Method">public void AddNewFloor()</Member>
-        <Member type="Method">public Floor GetZeroFloor()</Member>
-        <Member type="Method">public Floor GetHighestFloor()</Member>
-        <Member type="Method">public Floor GetLowestFloor()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -608,15 +608,35 @@
         <Member type="Method">private void Update()</Member>
         <Modifier>None</Modifier>
       </Entity>
+      <Entity type="Class">
+        <Name>StackDistributor</Name>
+        <Access>Public</Access>
+        <Location left="1178" top="272" />
+        <Size width="162" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int nextId</Member>
+        <Member type="Method">public static int GetNextId()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Association" first="5" second="3">
+      <Relationship type="Association" first="3" second="4">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>220</X>
+          <Y>519</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Dependency" first="6" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
       </Relationship>
     </Relationships>
   </ProjectItem>

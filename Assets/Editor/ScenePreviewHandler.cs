@@ -61,7 +61,7 @@ public static class ScenePreviewHandler
 					break;
 				
 				//Set position
-				previewObject.transform.position = new Vector3(position.x, position.y, (float)GameEditor.currentFloor.realHeight);
+				previewObject.transform.position = new Vector3(position.x, position.y, (float)GameEditor.currentRealFloor);
 				
 				//Set texture
 				if(previewRenderer.sprite == null || previewRenderer.sprite.name != prefab.spriteName)
@@ -72,7 +72,7 @@ public static class ScenePreviewHandler
 				}
 
 				//Set sorting layer
-				previewRenderer.sortingLayerName = GameEditor.currentFloor.sortingLayerName;
+				previewRenderer.sortingLayerName = "Floor " + GameEditor.currentFloor;
 
 				break;
 			}
@@ -82,14 +82,14 @@ public static class ScenePreviewHandler
 					break;
 				
 				//Set position
-				previewObject.transform.position = new Vector3(position.x, position.y, GameEditor.currentFloor.realHeight);
+				previewObject.transform.position = new Vector3(position.x, position.y, GameEditor.currentRealFloor);
 				
 				//Set texture
 				if(previewRenderer.sprite != eraserSprite)
 					previewRenderer.sprite = eraserSprite;
 				
 				//Set sorting layer
-				previewRenderer.sortingLayerName = GameEditor.currentFloor.sortingLayerName;
+				previewRenderer.sortingLayerName = "Floor " + GameEditor.currentFloor;
 
 				break;
 			}
