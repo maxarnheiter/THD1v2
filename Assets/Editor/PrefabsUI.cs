@@ -9,8 +9,10 @@ public class PrefabsUI
 	static Vector2 size = Vector2.zero;
 	static int buttonPadding = 12;
 	
+	static PrefabType typeFilter = PrefabType.Any;
 	static PrefabCategory categoryFilter = PrefabCategory.Any;
 	static PrefabColor colorFilter = PrefabColor.Any;
+	
 	
 	public static void Display(float width)
 	{
@@ -41,6 +43,17 @@ public class PrefabsUI
 		
 		EditorGUILayout.BeginHorizontal();
 		
+		GUILayout.Label("Type:", GUILayout.Width (65f));
+		
+		typeFilter = (PrefabType)EditorGUILayout.EnumPopup(typeFilter, GUILayout.Width (110f));
+		
+		if(GUILayout.Button ("Reset",GUILayout.Width (50f)))
+			categoryFilter = PrefabCategory.Any;
+		
+		EditorGUILayout.EndHorizontal ();
+		
+		EditorGUILayout.BeginHorizontal();
+		
 		GUILayout.Label("Category:", GUILayout.Width (65f));
 		
 		categoryFilter = (PrefabCategory)EditorGUILayout.EnumPopup(categoryFilter, GUILayout.Width (110f));
@@ -60,6 +73,7 @@ public class PrefabsUI
 			colorFilter = PrefabColor.Any;
 		
 		EditorGUILayout.EndHorizontal ();
+		
 	}
 	
 	static void ScrollviewUI(float width)
@@ -96,6 +110,10 @@ public class PrefabsUI
 	
 	static bool IsFiltered(Prefab prefab)
 	{
+	
+		if(typeFilter != PrefabType.Any && prefab.prefabType != typeFilter)
+			return true;
+		
 		if(categoryFilter != PrefabCategory.Any && prefab.prefabCategory != categoryFilter)
 			return true;
 			

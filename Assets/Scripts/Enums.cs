@@ -15,9 +15,11 @@ public enum Direction
 public enum PrefabType
 {
 	None, 
+	Any,
 	Ground, 
 	Corner, 
 	Thing, 
+	Item,
 	Player, 
 	Monster, 
 	NPC

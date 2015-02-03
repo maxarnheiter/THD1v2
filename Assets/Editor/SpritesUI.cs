@@ -7,6 +7,8 @@ public static class SpritesUI
 {
 	static Vector2 size = Vector2.zero;
 	static int buttonPadding = 12;
+	
+	static bool showOnlyUnused;
 
 	public static void Display(float width)
 	{
@@ -56,6 +58,10 @@ public static class SpritesUI
 		GUI.enabled = true;
 		
 		EditorGUILayout.EndHorizontal();
+		
+		EditorGUILayout.Space();
+		
+		showOnlyUnused = EditorGUILayout.Toggle("Show Only Unused", showOnlyUnused);
 	}
 
 	static void ScrollviewUI(float width)
@@ -82,7 +88,8 @@ public static class SpritesUI
 			
 			currentWidth = currentWidth + spriteKVP.Value.width + (2 * buttonPadding);
 			
-			DisplaySpriteButton(spriteKVP);
+			if(!IsFiltered(spriteKVP))
+				DisplaySpriteButton(spriteKVP);
 		}
 		EditorGUILayout.EndHorizontal();
 
@@ -103,5 +110,19 @@ public static class SpritesUI
 		}
 		
 		GUI.enabled = true;
+	}
+	
+	static bool IsFiltered(KeyValuePair<string, Texture2D> spriteKVP)
+	{
+		if(!showOnlyUnused)
+			return false;
+			
+		if(!GameEditor.hasPrefabs)
+			return false;
+			
+		if(GameEditor.prefabs.Any(p => p.Value.spriteName == spriteKVP.Key))
+			return true;
+			
+		return false;
 	}
 }

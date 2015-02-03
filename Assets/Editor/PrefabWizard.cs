@@ -22,6 +22,7 @@ public class PrefabWizard : EditorWindow
 	string completionText;
 	
 	bool hasBoxCollider;
+	bool isTrigger;
 
 	static void Init() 
 	{
@@ -90,6 +91,7 @@ public class PrefabWizard : EditorWindow
 		nextPrefabColor = (PrefabColor)EditorGUILayout.EnumPopup("Prefab Color: ", nextPrefabColor);
 		
 		hasBoxCollider = EditorGUILayout.Toggle("BoxCollider2D", hasBoxCollider);
+		isTrigger = EditorGUILayout.Toggle ("isTrigger", isTrigger);
 		
 		EditorGUILayout.Space();
 		EditorGUILayout.Space();
@@ -217,6 +219,12 @@ public class PrefabWizard : EditorWindow
 	{
 		hasError = false;	
 		errorText = new List<string>();
+		
+		if(nextPrefabType == PrefabType.Any)
+		{
+			hasError = true;
+			errorText.Add("Prefab Type cannot be Any.");
+		}
 		
 		if(nextPrefabCategory == PrefabCategory.Any)
 		{
