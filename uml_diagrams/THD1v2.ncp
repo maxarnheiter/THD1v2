@@ -8,7 +8,7 @@
         <Name>GameEditor</Name>
         <Access>Public</Access>
         <Location left="734" top="708" />
-        <Size width="305" height="365" />
+        <Size width="305" height="417" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public static Map currentMap</Member>
         <Member type="Field">public static int currentFloor</Member>
@@ -19,6 +19,12 @@
         <Member type="Field">public static Dictionary&lt;int, Prefab&gt; prefabs</Member>
         <Member type="Field">public static Prefab currentPrefab</Member>
         <Member type="Field">public static EditorClickAction clickAction</Member>
+        <Member type="Field">public static bool showAllFloors</Member>
+        <Member type="Field">public static bool showGrounds</Member>
+        <Member type="Field">public static bool showCorners</Member>
+        <Member type="Field">public static bool showThings</Member>
+        <Member type="Field">public static bool showItems</Member>
+        <Member type="Field">public static bool showCreatures</Member>
         <Member type="Method">public static void LoadPrefabs()</Member>
         <Member type="Method">public static void LoadSprites()</Member>
         <Member type="Method">public static void FloorUp()</Member>
@@ -208,7 +214,7 @@
       <Entity type="Class">
         <Name>ScenePreviewHandler</Name>
         <Access>Public</Access>
-        <Location left="1601" top="377" />
+        <Location left="1577" top="377" />
         <Size width="183" height="204" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private static GameObject previewObject</Member>
@@ -223,7 +229,7 @@
       <Entity type="Class">
         <Name>SceneClickHandler</Name>
         <Access>Public</Access>
-        <Location left="1356" top="377" />
+        <Location left="1370" top="377" />
         <Size width="186" height="115" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public static void OnClick()</Member>
@@ -244,6 +250,21 @@
         <Member type="Method">private static void ClickActionUI()</Member>
         <Member type="Method">private static void MapFloorsUI()</Member>
         <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SceneRenderer</Name>
+        <Access>Public</Access>
+        <Location left="1785" top="377" />
+        <Size width="162" height="115" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static void Render()</Member>
+        <Member type="Method">private static bool IsFiltered()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>CameraViewRenderer</Text>
+        <Location left="2035" top="377" />
+        <Size width="134" height="50" />
       </Entity>
     </Entities>
     <Relationships>
@@ -340,7 +361,7 @@
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
           <X>994</X>
-          <Y>1116</Y>
+          <Y>1168</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
           <X>994</X>
@@ -354,7 +375,7 @@
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
           <X>787</X>
-          <Y>1100</Y>
+          <Y>1152</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
           <X>787</X>
@@ -434,8 +455,12 @@
       <Relationship type="Dependency" first="4" second="18">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1552</X>
+          <Y>336</Y>
+        </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1456</X>
+          <X>1465</X>
           <Y>352</Y>
         </BendPoint>
       </Relationship>
@@ -447,7 +472,7 @@
           <Y>333</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1687</X>
+          <X>1663</X>
           <Y>350</Y>
         </BendPoint>
       </Relationship>
@@ -463,7 +488,7 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1329</X>
+          <X>1343</X>
           <Y>476</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
@@ -475,11 +500,11 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1575</X>
+          <X>1551</X>
           <Y>505</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1028</X>
+          <X>1017</X>
           <Y>683</Y>
         </BendPoint>
       </Relationship>
@@ -511,6 +536,34 @@
           <Y>727</Y>
         </BendPoint>
       </Relationship>
+      <Relationship type="Dependency" first="4" second="21">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1681</X>
+          <Y>298</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1862</X>
+          <Y>352</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="22" second="21">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="21" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1870</X>
+          <Y>601</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1037</X>
+          <Y>665</Y>
+        </BendPoint>
+      </Relationship>
     </Relationships>
   </ProjectItem>
   <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
@@ -530,7 +583,7 @@
       <Entity type="Class">
         <Name>Enums</Name>
         <Access>Public</Access>
-        <Location left="253" top="35" />
+        <Location left="32" top="468" />
         <Size width="207" height="137" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public enumeration Direction</Member>
@@ -541,7 +594,7 @@
       <Entity type="Class">
         <Name>ExtensionMethods</Name>
         <Access>Public</Access>
-        <Location left="541" top="35" />
+        <Location left="32" top="178" />
         <Size width="201" height="264" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public static Texture2D GetSpriteTexture()</Member>
@@ -560,7 +613,7 @@
       <Entity type="Class">
         <Name>Instance</Name>
         <Access>Public</Access>
-        <Location left="324" top="493" />
+        <Location left="949" top="164" />
         <Size width="204" height="98" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Map map</Member>
@@ -569,7 +622,7 @@
       <Entity type="Class">
         <Name>Map</Name>
         <Access>Public</Access>
-        <Location left="32" top="493" />
+        <Location left="598" top="178" />
         <Size width="163" height="264" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public string name</Member>
@@ -583,8 +636,8 @@
       <Entity type="Class">
         <Name>Prefab</Name>
         <Access>Public</Access>
-        <Location left="921" top="453" />
-        <Size width="162" height="216" />
+        <Location left="1177" top="164" />
+        <Size width="162" height="196" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public int id</Member>
         <Member type="Field">public int setId</Member>
@@ -598,8 +651,8 @@
       <Entity type="Class">
         <Name>Stack</Name>
         <Access>Public</Access>
-        <Location left="1178" top="453" />
-        <Size width="162" height="216" />
+        <Location left="1366" top="164" />
+        <Size width="162" height="167" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public int id</Member>
         <Member type="Field">private Vector3 lastPosition</Member>
@@ -611,12 +664,32 @@
       <Entity type="Class">
         <Name>StackDistributor</Name>
         <Access>Public</Access>
-        <Location left="1178" top="272" />
+        <Location left="1366" top="682" />
         <Size width="162" height="111" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int nextId</Member>
         <Member type="Method">public static int GetNextId()</Member>
         <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CameraViewRenderer</Name>
+        <Access>Public</Access>
+        <Location left="971" top="653" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static float searchBuffer</Member>
+        <Member type="Method">public static void UpdateObjects()</Member>
+        <Member type="Method">private static void SetSortingOrder()</Member>
+        <Member type="Method">private static List&lt;Instance&gt; Sort()</Member>
+        <Member type="Method">private static int TypeToInt()</Member>
+        <Member type="Method">private static Rect GetVisibleRect()</Member>
+        <Member type="Method">private static bool IsWithinView()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>MonoBehaviors  / Components</Text>
+        <Location left="1141" top="52" />
+        <Size width="180" height="50" />
       </Entity>
     </Entities>
     <Relationships>
@@ -626,8 +699,8 @@
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>220</X>
-          <Y>519</Y>
+          <X>786</X>
+          <Y>204</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
@@ -637,6 +710,14 @@
         </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="8" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1055</X>
+          <Y>321</Y>
+        </BendPoint>
       </Relationship>
     </Relationships>
   </ProjectItem>

@@ -36,7 +36,7 @@ public static class SceneInputHandler
 			}
 			case EventType.Repaint: 
 			{
-				//TODO
+				SceneRenderer.Render(sceneView);
 				break;
 			}
 		}

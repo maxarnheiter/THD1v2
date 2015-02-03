@@ -20,6 +20,13 @@ public static class GameEditor
 	
 	public static EditorClickAction clickAction;
 	
+	public static bool showAllFloors = false;
+	public static bool showGrounds = true;
+	public static bool showCorners = true;
+	public static bool showThings = true;
+	public static bool showItems = true;
+	public static bool showCreatures = true;
+	
 	public static int currentRealFloor
 	{
 		get { return currentFloor * -1; }

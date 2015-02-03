@@ -17,6 +17,10 @@ public static class QuickbarUI
 		EditorGUILayout.Space ();
 
 		MapFloorsUI (width);
+		
+		EditorGUILayout.Space ();
+		
+		MapVisibilityUI(width);
 
 		EditorGUILayout.EndVertical ();
 	}
@@ -100,6 +104,19 @@ public static class QuickbarUI
 		
 		EditorGUILayout.EndHorizontal ();
 
+	}
+	
+	static void MapVisibilityUI(float width)
+	{
+		GameEditor.showAllFloors = EditorGUILayout.Toggle("Show All Floors", GameEditor.showAllFloors);
+
+		EditorGUILayout.Space();
+						
+		GameEditor.showGrounds = EditorGUILayout.Toggle("Show Grounds", GameEditor.showGrounds);
+		GameEditor.showCorners = EditorGUILayout.Toggle("Show Corners", GameEditor.showCorners);
+		GameEditor.showThings = EditorGUILayout.Toggle("Show Things", GameEditor.showThings);
+		GameEditor.showItems = EditorGUILayout.Toggle("Show Items", GameEditor.showItems);
+		GameEditor.showCreatures = EditorGUILayout.Toggle("Show Creatures", GameEditor.showCreatures);
 	}
 
 }

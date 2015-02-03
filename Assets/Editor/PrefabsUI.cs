@@ -86,10 +86,25 @@ public class PrefabsUI
 			return;
 		
 		size = EditorGUILayout.BeginScrollView (size);
-		int currentWidth = 0;
 		
+		foreach(var set in GameEditor.prefabs.GroupBy(p => p.Value.setId))
+		{
+			DisplaySet (set.OrderBy(p => p.Value.spriteWidth), width);
+		}
+	
+		
+		
+		EditorGUILayout.EndScrollView ();
+	}
+	
+	static void DisplaySet(IOrderedEnumerable<KeyValuePair<int, Prefab>> set, float width)
+	{
+		GUILayout.Label("Set ID: " + set.First().Value.setId);
+	
+		int currentWidth = 0;
+	
 		EditorGUILayout.BeginHorizontal();
-		foreach(var prefabKVP in GameEditor.prefabs)
+		foreach(var prefabKVP in set)
 		{
 			if(currentWidth >= width)
 			{
@@ -104,8 +119,6 @@ public class PrefabsUI
 				DisplayPrefabButton(prefabKVP);
 		}
 		EditorGUILayout.EndHorizontal();
-		
-		EditorGUILayout.EndScrollView ();
 	}
 	
 	static bool IsFiltered(Prefab prefab)
