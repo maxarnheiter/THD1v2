@@ -10,6 +10,8 @@ public class PrefabWizard : EditorWindow
 	int selectionIndex;
 	
 	int nextSetId = 0;
+
+	PrefabType nextPrefabType;
 	PrefabCategory nextPrefabCategory;
 	PrefabColor nextPrefabColor;
 	
@@ -80,6 +82,8 @@ public class PrefabWizard : EditorWindow
 			nextSetId = GetNextSetID();
 		
 		EditorGUILayout.EndHorizontal();
+
+		nextPrefabType = (PrefabType)EditorGUILayout.EnumPopup ("Type: ", nextPrefabType);
 		
 		nextPrefabCategory = (PrefabCategory)EditorGUILayout.EnumPopup("Prefab Category: ", nextPrefabCategory);
 		
@@ -202,6 +206,7 @@ public class PrefabWizard : EditorWindow
 		prefab.spriteName = sprite.name;
 		prefab.spriteWidth = (int)sprite.rect.width;
 		prefab.spriteHeight = (int)sprite.rect.height;
+		prefab.prefabType = nextPrefabType;
 		prefab.prefabCategory = nextPrefabCategory;
 		prefab.prefabColor = nextPrefabColor;
 		

@@ -12,6 +12,17 @@ public enum Direction
 	Down
 }
 
+public enum PrefabType
+{
+	None, 
+	Ground, 
+	Corner, 
+	Thing, 
+	Player, 
+	Monster, 
+	NPC
+}
+
 public enum PrefabCategory
 {
 	None,
