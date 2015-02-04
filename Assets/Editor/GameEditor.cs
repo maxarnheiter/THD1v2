@@ -12,7 +12,18 @@ public static class GameEditor
 	public static Dictionary<string, Sprite> spriteObjects;
 
 	public static bool hasPrefabs;
-	public static Dictionary<int, Prefab> prefabs;
+	static PrefabCollection prefabCollection;
+	public static Dictionary<int, Prefab> prefabs
+	{
+		get 
+		{ 
+			if(prefabCollection == null)
+				return null;
+			else
+				return prefabCollection.prefabs; 
+		}
+	}
+	
 	
 	public static List<KeyValuePair<string, Texture2D>> spriteSelection;
 	
@@ -37,9 +48,9 @@ public static class GameEditor
 	{
 		hasPrefabs = false;
 
-		prefabs = PrefabLoader.LoadPrefabs();
+		prefabCollection = PrefabLoader.GetPrefabCollection();
 
-		if (prefabs != null)
+		if (prefabCollection != null)
 			hasPrefabs = true;
 	}
 	

@@ -28,7 +28,13 @@ public static class SceneRenderer
 				instance.spriteRenderer.enabled = false;
 		
 		if(nonFiltered.Count > 0)
+		{
+			foreach(var instance in nonFiltered)
+				instance.spriteRenderer.enabled = true;
+				
 			CameraViewRenderer.UpdateObjects(sceneView.camera, nonFiltered);
+		}
+			
 	}
 	
 	static bool IsFiltered(Instance instance)

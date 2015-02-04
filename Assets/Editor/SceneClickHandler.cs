@@ -24,7 +24,7 @@ public static class SceneClickHandler
 	
 	static void Draw(Vector2 position, int floor)
 	{
-		
+		GameEditor.currentMap.Instantiate(GameEditor.currentPrefab, position, floor);
 	}
 	
 	static void Erase(Vector2 position, int floor)

@@ -5,7 +5,23 @@ using System.Linq;
 
 public static class PrefabLoader 
 {
-	public static Dictionary<int, Prefab> LoadPrefabs()
+
+	public static PrefabCollection GetPrefabCollection()
+	{
+		while(GameObject.Find("Prefab Collection") != null)
+			GameObject.DestroyImmediate(GameObject.Find("Prefab Collection"));
+			
+		var newObject = new GameObject();
+		newObject.name = "Prefab Collection";
+		var prefabCollection = newObject.AddComponent<PrefabCollection>();
+		
+		prefabCollection.prefabs = LoadPrefabs();
+		
+		return prefabCollection;
+	}
+
+
+	static Dictionary<int, Prefab> LoadPrefabs()
 	{
 		var prefabs = new Dictionary<int, Prefab>();
 		

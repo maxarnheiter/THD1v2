@@ -4,7 +4,6 @@ using System.Linq;
 
 public static class CameraViewRenderer
 {
-
 	static float searchBuffer = 2f;
 
 	public static void UpdateObjects(Camera camera, List<Instance> instances)
@@ -19,6 +18,8 @@ public static class CameraViewRenderer
 			if(IsWithinView(cameraRect, instance))
 				visible.Add(instance);
 		}
+		
+		Debug.Log (visible.Count);
 		
 		//Sort those that are visible
 		var sorted = Sort (visible);
@@ -95,10 +96,10 @@ public static class CameraViewRenderer
 	
 	static bool IsWithinView(Rect rect, Instance instance)
 	{
-		if(instance.transform.position.x >= rect.xMin &&
-		instance.transform.position.x <= rect.xMax &&
-		instance.transform.position.y >= rect.yMin &&
-		instance.transform.position.y <= rect.xMin)
+		if(	instance.transform.position.x >= rect.xMin &&
+			instance.transform.position.x <= rect.xMax &&
+			instance.transform.position.y >= rect.yMin &&
+			instance.transform.position.y <= rect.yMax)
 			return true;
 			
 		return false;

@@ -28,5 +28,16 @@ public class Map : MonoBehaviour
 	{
 	
 	}
+	
+	public void Instantiate(Prefab prefab, Vector2 position, int floor)
+	{
+		var newPrefab = Object.Instantiate(prefab, new Vector3(position.x, position.y, (float)(floor * -1)), Quaternion.identity) as Prefab;
+		
+		var newObject = newPrefab.gameObject;
+		
+		newObject.transform.parent = this.transform;
+		
+		instances.Add(newObject.GetInstanceID(), new Instance(newObject));
+	}
 
 }

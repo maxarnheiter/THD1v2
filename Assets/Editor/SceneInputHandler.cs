@@ -20,13 +20,11 @@ public static class SceneInputHandler
 			case EventType.MouseUp: 
 			{
 				SceneClickHandler.OnClick(GetMousePosition(sceneView, current));
-				current.Use ();
 				break;
 			}
 			case EventType.MouseDrag:
 			{
 				SceneClickHandler.OnClick(GetMousePosition(sceneView, current));
-				current.Use();
 				break;
 			}
 			case EventType.MouseMove: 

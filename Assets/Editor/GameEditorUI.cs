@@ -47,7 +47,7 @@ public static class GameEditorUI
 	{
 		EditorGUILayout.BeginHorizontal ();
 
-			var quickbarWidth = 200f;
+			var quickbarWidth = 170f;
 			var selectionWidth = width - quickbarWidth;
 
 			switch (selection) 
