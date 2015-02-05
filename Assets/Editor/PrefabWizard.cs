@@ -253,7 +253,7 @@ public class PrefabWizard : EditorWindow
 			
 		nextId = GameEditor.prefabs.Max (p => p.Value.setId);
 		
-		return nextId;
+		return nextId + 1;
 	}
 	
 	int GetNextPrefabID()

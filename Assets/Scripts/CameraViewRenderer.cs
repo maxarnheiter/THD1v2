@@ -19,8 +19,6 @@ public static class CameraViewRenderer
 				visible.Add(instance);
 		}
 		
-		Debug.Log (visible.Count);
-		
 		//Sort those that are visible
 		var sorted = Sort (visible);
 		

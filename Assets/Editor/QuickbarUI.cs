@@ -77,7 +77,6 @@ public static class QuickbarUI
 			GUILayout.FlexibleSpace ();
 
 		EditorGUILayout.EndHorizontal ();
-
 		EditorGUILayout.BeginHorizontal ();
 			
 			GUILayout.FlexibleSpace ();
@@ -87,7 +86,6 @@ public static class QuickbarUI
 			GUILayout.FlexibleSpace ();
 		
 		EditorGUILayout.EndHorizontal ();
-
 		EditorGUILayout.BeginHorizontal ();
 		
 			GUILayout.FlexibleSpace ();
@@ -108,15 +106,111 @@ public static class QuickbarUI
 	
 	static void MapVisibilityUI(float width)
 	{
-		GameEditor.showAllFloors = EditorGUILayout.Toggle("Show All Floors", GameEditor.showAllFloors);
-
 		EditorGUILayout.Space();
 						
-		GameEditor.showGrounds = EditorGUILayout.Toggle("Show Grounds", GameEditor.showGrounds);
-		GameEditor.showCorners = EditorGUILayout.Toggle("Show Corners", GameEditor.showCorners);
-		GameEditor.showThings = EditorGUILayout.Toggle("Show Things", GameEditor.showThings);
-		GameEditor.showItems = EditorGUILayout.Toggle("Show Items", GameEditor.showItems);
-		GameEditor.showCreatures = EditorGUILayout.Toggle("Show Creatures", GameEditor.showCreatures);
+		EditorGUILayout.BeginHorizontal ();
+			GUILayout.FlexibleSpace();
+				GUILayout.Label("Show");
+			GUILayout.FlexibleSpace();
+				GUILayout.Label("Hide");
+			GUILayout.FlexibleSpace();
+		EditorGUILayout.EndHorizontal ();
+		
+		EditorGUILayout.BeginHorizontal ();
+		
+			if(!GameEditor.showAllFloors)
+				GUILayout.FlexibleSpace();
+			
+			if(GUILayout.Button ("Top Floors", GUILayout.Width (width / 2)))
+			{
+				GameEditor.showAllFloors =! GameEditor.showAllFloors;
+				SceneView.RepaintAll();
+			}
+			
+			if(GameEditor.showAllFloors)
+				GUILayout.FlexibleSpace();
+		
+		EditorGUILayout.EndHorizontal ();
+
+		EditorGUILayout.BeginHorizontal ();
+		
+			if(!GameEditor.showGrounds)
+				GUILayout.FlexibleSpace();
+				
+			if(GUILayout.Button ("Grounds", GUILayout.Width (width / 2)))
+			{
+				GameEditor.showGrounds =! GameEditor.showGrounds;
+				SceneView.RepaintAll();
+			}
+				
+			if(GameEditor.showGrounds)
+				GUILayout.FlexibleSpace();
+			
+		EditorGUILayout.EndHorizontal ();
+		
+		EditorGUILayout.BeginHorizontal ();
+		
+			if(!GameEditor.showCorners)
+				GUILayout.FlexibleSpace();
+			
+			if(GUILayout.Button ("Corners", GUILayout.Width (width / 2)))
+			{
+				GameEditor.showCorners =! GameEditor.showCorners;
+				SceneView.RepaintAll();
+			}
+			
+			if(GameEditor.showCorners)
+				GUILayout.FlexibleSpace();
+		
+		EditorGUILayout.EndHorizontal ();
+		
+		EditorGUILayout.BeginHorizontal ();
+		
+			if(!GameEditor.showThings)
+				GUILayout.FlexibleSpace();
+			
+			if(GUILayout.Button ("Things", GUILayout.Width (width / 2)))
+			{
+				GameEditor.showThings =! GameEditor.showThings;
+				SceneView.RepaintAll();
+			}
+			
+			if(GameEditor.showThings)
+				GUILayout.FlexibleSpace();
+		
+		EditorGUILayout.EndHorizontal ();
+		
+		EditorGUILayout.BeginHorizontal ();
+		
+			if(!GameEditor.showItems)
+				GUILayout.FlexibleSpace();
+			
+			if(GUILayout.Button ("Items", GUILayout.Width (width / 2)))
+			{
+				GameEditor.showItems =! GameEditor.showItems;
+				SceneView.RepaintAll();
+			}
+			
+			if(GameEditor.showItems)
+				GUILayout.FlexibleSpace();
+		
+		EditorGUILayout.EndHorizontal ();
+		
+		EditorGUILayout.BeginHorizontal ();
+		
+			if(!GameEditor.showCreatures)
+				GUILayout.FlexibleSpace();
+			
+			if(GUILayout.Button ("Creatures", GUILayout.Width (width / 2)))
+			{
+				GameEditor.showCreatures =! GameEditor.showCreatures;
+				SceneView.RepaintAll();
+			}
+			
+			if(GameEditor.showCreatures)
+				GUILayout.FlexibleSpace();
+		
+		EditorGUILayout.EndHorizontal ();
 	}
 
 }

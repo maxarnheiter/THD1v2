@@ -23,6 +23,8 @@ public static class PrefabLoader
 
 	static Dictionary<int, Prefab> LoadPrefabs()
 	{
+		double startTime = EditorApplication.timeSinceStartup;
+		
 		var prefabs = new Dictionary<int, Prefab>();
 		
 		var rawPrefabObjects = Resources.LoadAll("Prefabs/");
@@ -47,6 +49,8 @@ public static class PrefabLoader
 				return null;
 			}
 		}
+		
+		Debug.Log ("Prefab load time: " + (EditorApplication.timeSinceStartup - startTime).ToString("#.###") + " seconds. Quantity loaded: " + prefabs.Count);
 		
 		return prefabs;
 	}

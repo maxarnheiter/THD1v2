@@ -9,64 +9,65 @@ public static class GameEditorUI
 
 	public static void Display(float width)
 	{
-		SelectionUI ();
-		
-		EditorGUILayout.Space();
-		
-		SelectionSpecifcUI (width);
-	}
-
-	static void SelectionUI()
-	{
-		EditorGUILayout.BeginHorizontal ();
-		GUILayout.FlexibleSpace();
-
-			if (selection == UISelection.Sprites)
-				GUI.enabled = false;
-			if (GUILayout.Button ("Sprites UI", GUILayout.Width (100f)))
-				selection = UISelection.Sprites;
-			GUI.enabled = true;
+		float quickbarUIWidth = 170f;
+		float selectionUIWidth = width - quickbarUIWidth;
 	
-			if (selection == UISelection.Prefabs)
-				GUI.enabled = false;
-			if (GUILayout.Button ("Prefabs UI", GUILayout.Width (100f)))
-				selection = UISelection.Prefabs;
-			GUI.enabled = true;
-			
-			if (selection == UISelection.Map)
-				GUI.enabled = false;
-			if (GUILayout.Button ("Map UI", GUILayout.Width (100f)))
-				selection = UISelection.Map;
-			GUI.enabled = true;
+		EditorGUILayout.BeginHorizontal ();
+	
+			SelectionUI (selectionUIWidth);
 		
-		GUILayout.FlexibleSpace();
-		EditorGUILayout.EndHorizontal ();
+			GUILayout.FlexibleSpace ();
+			
+			QuickbarUI.Display (quickbarUIWidth);
+		
+		EditorGUILayout.EndHorizontal();
 	}
 
-	static void SelectionSpecifcUI(float width)
+	static void SelectionUI(float width)
 	{
-		EditorGUILayout.BeginHorizontal ();
-
-			var quickbarWidth = 170f;
-			var selectionWidth = width - quickbarWidth;
-
-			switch (selection) 
-			{
+		EditorGUILayout.BeginVertical();
+		
+			EditorGUILayout.BeginHorizontal ();
+			GUILayout.FlexibleSpace();
+	
+				if (selection == UISelection.Sprites)
+					GUI.enabled = false;
+				if (GUILayout.Button ("Sprites UI", GUILayout.Width (100f)))
+					selection = UISelection.Sprites;
+				GUI.enabled = true;
+		
+				if (selection == UISelection.Prefabs)
+					GUI.enabled = false;
+				if (GUILayout.Button ("Prefabs UI", GUILayout.Width (100f)))
+					selection = UISelection.Prefabs;
+				GUI.enabled = true;
+				
+				if (selection == UISelection.Map)
+					GUI.enabled = false;
+				if (GUILayout.Button ("Map UI", GUILayout.Width (100f)))
+					selection = UISelection.Map;
+				GUI.enabled = true;
+			
+			GUILayout.FlexibleSpace();
+			EditorGUILayout.EndHorizontal ();
+			
+			EditorGUILayout.BeginHorizontal ();
+			
+				switch (selection) 
+				{
 				case UISelection.Sprites:
-					SpritesUI.Display(selectionWidth);
-				break;
+					SpritesUI.Display(width);
+					break;
 				case UISelection.Prefabs:
-					PrefabsUI.Display(selectionWidth);
-				break;
+					PrefabsUI.Display(width);
+					break;
 				case UISelection.Map:
-					MapUI.Display(selectionWidth);
-				break;
-			}
-
-			GUILayout.FlexibleSpace ();
-
-			QuickbarUI.Display (quickbarWidth);
-
-		EditorGUILayout.EndHorizontal ();
+					MapUI.Display(width);
+					break;
+				}
+			
+			EditorGUILayout.EndHorizontal ();
+		
+		EditorGUILayout.EndVertical();
 	}
 }

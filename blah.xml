@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<MapFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <mapName>New Map</mapName>
+  <mapObjects>
+    <MapObject>
+      <prefabId>18</prefabId>
+      <x>-8</x>
+      <y>6</y>
+      <floor>0</floor>
+    </MapObject>
+    <MapObject>
+      <prefabId>18</prefabId>
+      <x>-7</x>
+      <y>6</y>
+      <floor>0</floor>
+    </MapObject>
+    <MapObject>
+      <prefabId>18</prefabId>
+      <x>-6</x>
+      <y>6</y>
+      <floor>0</floor>
+    </MapObject>
+  </mapObjects>
+</MapFile>

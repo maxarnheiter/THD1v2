@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: 1fd3d0b13bb6ba04cb96e61bc5a750ab
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: weapons_1_0
+    21300002: weapons_1_1
+    21300004: weapons_1_3
+    21300006: weapons_1_5
+    21300008: weapons_1_6
+    21300010: weapons_1_7
+    21300012: weapons_1_9
+    21300014: weapons_1_11
+    21300016: weapons_1_12
+    21300018: weapons_1_13
+    21300020: weapons_1_16
+    21300022: weapons_1_20
+    21300024: weapons_1_22
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: weapons_1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4032
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 4032
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 4032
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_5
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 4032
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4000
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 4000
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 4000
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 4000
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3968
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_13
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 3968
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_16
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 3968
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_20
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 3936
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: weapons_1_22
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 3904
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections.Generic;
 
 public static class GameEditor 
@@ -43,7 +44,6 @@ public static class GameEditor
 		get { return currentFloor * -1; }
 	}
 
-
 	public static void LoadPrefabs()
 	{
 		hasPrefabs = false;
@@ -57,11 +57,55 @@ public static class GameEditor
 	public static void LoadSprites()
 	{
 		hasSprites = false;
-
+		
 		SpriteLoader.LoadSprites(out spriteTextures, out spriteObjects);
 
 		if (spriteTextures != null && spriteObjects != null)
 			hasSprites = true;
+	}
+	
+	public static void CreateNewMap()
+	{
+		var wizard = new MapWizard();
+		wizard.Show();
+	}
+	
+	public static void LoadFromScene()
+	{
+		GameEditor.hasMap = false;
+		Map map = GameObject.FindObjectOfType<Map>();
+		
+		if(map != null)
+		{
+			hasMap = true;
+			currentMap = map;
+			currentFloor = 0;
+		}
+	}
+	
+	public static void SaveMap()
+	{
+		string path = EditorUtility.SaveFilePanel("", "", "", "xml");
+		
+		if(path != null || path != "")
+			MapSerializer.Save(GameEditor.currentMap, path);
+	}
+	
+	public static void LoadMap()
+	{
+		string path = EditorUtility.OpenFilePanel("", "", "xml");
+		if(path != null || path != "")
+		{
+			GameEditor.hasMap = false;
+			Map map = MapSerializer.Load(path);
+			
+			if(map != null)
+			{
+				GameEditor.hasMap = true;
+				GameEditor.currentMap = map;
+				GameEditor.currentFloor = 0;
+			}
+		}
 	}
 
 	public static void FloorUp()
@@ -70,6 +114,8 @@ public static class GameEditor
 			return;
 
 		currentFloor++;
+		
+		SceneView.RepaintAll();
 	}
 
 	public static void FloorDown()
@@ -78,6 +124,8 @@ public static class GameEditor
 			return;
 		
 		currentFloor--;
+		
+		SceneView.RepaintAll();
 	}
 	
 	

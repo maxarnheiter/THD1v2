@@ -5,6 +5,22 @@ TextureImporter:
     21300000: forest_1
     21300002: forest_1_0
     21300004: forest_1_1
+    21300006: forest_1_2
+    21300008: forest_1_3
+    21300010: forest_1_4
+    21300012: forest_1_5
+    21300014: forest_1_6
+    21300016: forest_1_7
+    21300018: forest_1_8
+    21300020: forest_1_9
+    21300022: forest_1_10
+    21300024: forest_1_11
+    21300026: forest_1_12
+    21300028: forest_1_13
+    21300030: forest_1_14
+    21300032: forest_1_15
+    21300034: forest_1_16
+    21300036: forest_1_17
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -63,6 +79,166 @@ TextureImporter:
         y: 2304
         width: 64
         height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_2
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_3
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2368
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_4
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 2368
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_5
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_6
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_7
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_8
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 2368
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_9
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 2368
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_10
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 2400
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_11
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2400
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_12
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2368
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_13
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_14
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_15
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 2336
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_16
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 2368
+        width: 32
+        height: 32
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: forest_1_17
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 2400
+        width: 32
+        height: 32
       alignment: 8
       pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

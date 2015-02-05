@@ -7,7 +7,7 @@ public static class MapUI
 
 	public static void Display(float width)
 	{
-		var controlsWidth = 300f;
+		var controlsWidth = 250f;
 		var statisticsWidth = 300f;
 
 		EditorGUILayout.Space();
@@ -22,7 +22,7 @@ public static class MapUI
 				MapStatisticsUI(statisticsWidth);
 			EditorGUILayout.EndVertical();
 
-			GUILayout.Label ("", GUILayout.Width (width - controlsWidth - statisticsWidth));
+			GUILayout.Label ("", GUILayout.Width (width - controlsWidth - statisticsWidth - 35));
 		
 		EditorGUILayout.EndHorizontal();
 	}
@@ -37,8 +37,7 @@ public static class MapUI
 				GUI.enabled = false;
 			if(GUILayout.Button ("Create New Map", GUILayout.Width(width / 2f)))
 			{
-				var wizard = new MapWizard();
-				wizard.Show();
+				GameEditor.CreateNewMap();
 			}
 			GUI.enabled = true;
 			
@@ -46,9 +45,7 @@ public static class MapUI
 				GUI.enabled = false;
 			if(GUILayout.Button ("Save Map", GUILayout.Width(width / 2f)))
 			{
-				string path = EditorUtility.SaveFilePanel("", "", "", "xml");
-				if(path != null || path != "")
-					MapSerializer.Save(GameEditor.currentMap, path);
+				GameEditor.SaveMap();
 			}
 			GUI.enabled = true;
 			
@@ -60,15 +57,7 @@ public static class MapUI
 				GUI.enabled = false;
 			if(GUILayout.Button("Load From Scene", GUILayout.Width(width / 2f)))
 			{
-				GameEditor.hasMap = false;
-				Map map = GameObject.FindObjectOfType<Map>();
-				
-				if(map != null)
-				{
-					GameEditor.hasMap = true;
-					GameEditor.currentMap = map;
-					GameEditor.currentFloor = 0;
-				}
+				GameEditor.LoadFromScene();
 			}
 			GUI.enabled = true;
 			
@@ -76,19 +65,7 @@ public static class MapUI
 				GUI.enabled = false;
 			if(GUILayout.Button("Load From File", GUILayout.Width(width / 2f)))
 			{
-				string path = EditorUtility.OpenFilePanel("", "", "xml");
-				if(path != null || path != "")
-				{
-					GameEditor.hasMap = false;
-					Map map = MapSerializer.Load(path);
-
-					if(map != null)
-					{
-						GameEditor.hasMap = true;
-						GameEditor.currentMap = map;
-						GameEditor.currentFloor = 0;
-					}
-				}
+				GameEditor.LoadMap();
 			}
 			GUI.enabled = true;
 			

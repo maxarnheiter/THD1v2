@@ -77,7 +77,7 @@ public static class SceneRenderer
 		
 		//Filter by Floor
 		if(GameEditor.showAllFloors)
-			return true;
+			return false;
 		
 		if(instance.transform.position.z < (GameEditor.currentFloor * -1))
 			return true;

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,6 +8,8 @@ public static class SpriteLoader
 
 	public static void LoadSprites(out Dictionary<string, Texture2D> textures, out Dictionary<string, Sprite> sprites)
 	{
+		var startTime = EditorApplication.timeSinceStartup;
+		
 		var rawSprites = Resources.LoadAll ("Sprites/");
 		
 		textures = new Dictionary<string, Texture2D>();
@@ -36,5 +39,6 @@ public static class SpriteLoader
 			}
 		}
 
+		Debug.Log ("Sprite load time: " + (EditorApplication.timeSinceStartup - startTime).ToString("#.###") + " seconds. Quantity loaded: " + sprites.Count);
 	}
 }

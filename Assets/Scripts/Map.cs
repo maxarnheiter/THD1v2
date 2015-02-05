@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+[ExecuteInEditMode]
 public class Map : MonoBehaviour 
 {
 
@@ -26,7 +27,14 @@ public class Map : MonoBehaviour
 	
 	void Update () 
 	{
+		ContinuityCheck();
+	}
 	
+	void ContinuityCheck()
+	{
+		if(this.transform.childCount != this.instances.Count)
+			foreach(Transform child in transform)
+				instances.Add(child.gameObject.GetInstanceID(), new Instance(child.gameObject));
 	}
 	
 	public void Instantiate(Prefab prefab, Vector2 position, int floor)
