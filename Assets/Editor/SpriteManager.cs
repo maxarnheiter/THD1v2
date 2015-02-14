@@ -27,7 +27,7 @@ public static class SpriteManager
 
     public static void OpenPrefabWizard(List<KeyValuePair<string, Texture2D>> spriteSelection)
     {
-        var wizard = new PrefabWizard(spriteSelection);
+        var wizard = new SpriteWizard(spriteSelection);
         wizard.Show();
     }
 

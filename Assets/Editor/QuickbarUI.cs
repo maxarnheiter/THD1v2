@@ -28,18 +28,15 @@ public static class QuickbarUI
 	{
 		EditorGUILayout.BeginVertical ();
 
-		GUILayout.Label ("Quickbar Tools");
-
 		ClickActionUI (width);
 
 		EditorGUILayout.Space ();
-		EditorGUILayout.Space ();
 
 		MapFloorsUI (width);
-		
-		EditorGUILayout.Space ();
-		
-		MapVisibilityUI(width);
+
+        EditorGUILayout.Space();
+
+        FloorTransparencyUI(width);
 
 		EditorGUILayout.EndVertical ();
 	}
@@ -50,27 +47,27 @@ public static class QuickbarUI
 		
 		GUILayout.FlexibleSpace ();
 		
-		if (SceneManager.clickAction == EditorClickAction.None)
+		if (SceneManager.clickAction == SceneClickAction.None)
 			GUI.enabled = false;
 		if(GUILayout.Button ("None", GUILayout.Width(50f)))
 		{
-            SceneManager.clickAction = EditorClickAction.None;
+            SceneManager.clickAction = SceneClickAction.None;
 		}
 		GUI.enabled = true;
 
-        if (SceneManager.clickAction == EditorClickAction.Erase)
+        if (SceneManager.clickAction == SceneClickAction.Erase)
 			GUI.enabled = false;
 		if (GUILayout.Button (eraserIcon, GUILayout.Width (50f))) 
 		{
-            SceneManager.clickAction = EditorClickAction.Erase;
+            SceneManager.clickAction = SceneClickAction.Erase;
 		}
 		GUI.enabled = true;
 
-        if (SceneManager.clickAction == EditorClickAction.Draw)
+        if (SceneManager.clickAction == SceneClickAction.Draw)
 			GUI.enabled = false;
 		if (GUILayout.Button (pencilIcon, GUILayout.Width (50f))) 
 		{
-            SceneManager.clickAction = EditorClickAction.Draw;
+            SceneManager.clickAction = SceneClickAction.Draw;
 		}
 		GUI.enabled = true;
 		
@@ -81,155 +78,88 @@ public static class QuickbarUI
 
 	static void MapFloorsUI(float width)
 	{
-		EditorGUILayout.BeginHorizontal ();
+        EditorGUILayout.BeginHorizontal();
 
-			GUILayout.FlexibleSpace ();
+            EditorGUILayout.BeginVertical();
+                FloorControlUI(width);
+            EditorGUILayout.EndVertical();
 
-            if (!MapManager.hasMap)
-					GUI.enabled = false;
-			if (GUILayout.Button (upIcon, GUILayout.Width (50f))) 
-			{
-                MapManager.FloorUp();
-			}
-			GUI.enabled = true;
+            EditorGUILayout.BeginVertical();
+                MapVisibilityUI(width);
+            EditorGUILayout.EndVertical();
 
-			GUILayout.FlexibleSpace ();
-
-		EditorGUILayout.EndHorizontal ();
-		EditorGUILayout.BeginHorizontal ();
-			
-			GUILayout.FlexibleSpace ();
-
-            GUILayout.Label("Floor " + ((MapManager.hasMap == true) ? MapManager.currentFloor.ToString() : "NA"));
-			
-			GUILayout.FlexibleSpace ();
-		
-		EditorGUILayout.EndHorizontal ();
-		EditorGUILayout.BeginHorizontal ();
-		
-			GUILayout.FlexibleSpace ();
-
-            if (!MapManager.hasMap)
-				GUI.enabled = false;
-			if (GUILayout.Button (downIcon, GUILayout.Width (50f))) 
-			{
-                MapManager.FloorDown();
-			}
-			GUI.enabled = true;
-			
-			GUILayout.FlexibleSpace ();
-		
-		EditorGUILayout.EndHorizontal ();
+        EditorGUILayout.EndHorizontal();
 
 	}
+
+    static void FloorControlUI(float width)
+    {
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        if (!MapManager.hasMap)
+            GUI.enabled = false;
+        if (GUILayout.Button(upIcon, GUILayout.Width(50f)))
+        {
+            MapManager.FloorUp();
+        }
+        GUI.enabled = true;
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Floor " + ((MapManager.hasMap == true) ? MapManager.currentFloor.ToString() : "NA"));
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        if (!MapManager.hasMap)
+            GUI.enabled = false;
+        if (GUILayout.Button(downIcon, GUILayout.Width(50f)))
+        {
+            MapManager.FloorDown();
+        }
+        GUI.enabled = true;
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+    }
 	
 	static void MapVisibilityUI(float width)
 	{
-		EditorGUILayout.Space();
-						
-		EditorGUILayout.BeginHorizontal ();
-			GUILayout.FlexibleSpace();
-				GUILayout.Label("Show");
-			GUILayout.FlexibleSpace();
-				GUILayout.Label("Hide");
-			GUILayout.FlexibleSpace();
-		EditorGUILayout.EndHorizontal ();
-		
-		EditorGUILayout.BeginHorizontal ();
-		
-			if(!SceneManager.showAllFloors)
-				GUILayout.FlexibleSpace();
-			
-			if(GUILayout.Button ("Top Floors", GUILayout.Width (width / 2)))
-			{
-                SceneManager.showAllFloors = !SceneManager.showAllFloors;
-				SceneView.RepaintAll();
-			}
+        if(GUILayout.Button("Top Floors: " + ((SceneManager.showAllFloors == true) ? "TRUE" : "FALSE")))
+            SceneManager.showAllFloors = !SceneManager.showAllFloors;
 
-            if (SceneManager.showAllFloors)
-				GUILayout.FlexibleSpace();
-		
-		EditorGUILayout.EndHorizontal ();
+        if (GUILayout.Button("Grounds: " + ((SceneManager.showGrounds == true) ? "TRUE" : "FALSE")))
+            SceneManager.showGrounds = !SceneManager.showGrounds;
 
-		EditorGUILayout.BeginHorizontal ();
+        if (GUILayout.Button("Corners: " + ((SceneManager.showCorners == true) ? "TRUE" : "FALSE")))
+            SceneManager.showCorners = !SceneManager.showCorners;
 
-        if (!SceneManager.showGrounds)
-				GUILayout.FlexibleSpace();
-				
-			if(GUILayout.Button ("Grounds", GUILayout.Width (width / 2)))
-			{
-                SceneManager.showGrounds = !SceneManager.showGrounds;
-				SceneView.RepaintAll();
-			}
+        if (GUILayout.Button("Items: " + ((SceneManager.showItems == true) ? "TRUE" : "FALSE")))
+            SceneManager.showItems = !SceneManager.showItems;
 
-            if (SceneManager.showGrounds)
-				GUILayout.FlexibleSpace();
-			
-		EditorGUILayout.EndHorizontal ();
-		
-		EditorGUILayout.BeginHorizontal ();
+        if (GUILayout.Button("Things: " + ((SceneManager.showThings == true) ? "TRUE" : "FALSE")))
+            SceneManager.showThings = !SceneManager.showThings;
 
-        if (!SceneManager.showCorners)
-				GUILayout.FlexibleSpace();
-			
-			if(GUILayout.Button ("Corners", GUILayout.Width (width / 2)))
-			{
-                SceneManager.showCorners = !SceneManager.showCorners;
-				SceneView.RepaintAll();
-			}
-
-            if (SceneManager.showCorners)
-				GUILayout.FlexibleSpace();
-		
-		EditorGUILayout.EndHorizontal ();
-		
-		EditorGUILayout.BeginHorizontal ();
-
-            if (!SceneManager.showThings)
-				GUILayout.FlexibleSpace();
-			
-			if(GUILayout.Button ("Things", GUILayout.Width (width / 2)))
-			{
-                SceneManager.showThings = !SceneManager.showThings;
-				SceneView.RepaintAll();
-			}
-
-            if (SceneManager.showThings)
-				GUILayout.FlexibleSpace();
-		
-		EditorGUILayout.EndHorizontal ();
-		
-		EditorGUILayout.BeginHorizontal ();
-
-            if (!SceneManager.showItems)
-				GUILayout.FlexibleSpace();
-			
-			if(GUILayout.Button ("Items", GUILayout.Width (width / 2)))
-			{
-                SceneManager.showItems = !SceneManager.showItems;
-				SceneView.RepaintAll();
-			}
-
-            if (SceneManager.showItems)
-				GUILayout.FlexibleSpace();
-		
-		EditorGUILayout.EndHorizontal ();
-		
-		EditorGUILayout.BeginHorizontal ();
-
-            if (!SceneManager.showCreatures)
-				GUILayout.FlexibleSpace();
-			
-			if(GUILayout.Button ("Creatures", GUILayout.Width (width / 2)))
-			{
-                SceneManager.showCreatures = !SceneManager.showCreatures;
-				SceneView.RepaintAll();
-			}
-
-            if (SceneManager.showCreatures)
-				GUILayout.FlexibleSpace();
-		
-		EditorGUILayout.EndHorizontal ();
+        if (GUILayout.Button("Creatures: " + ((SceneManager.showCreatures == true) ? "TRUE" : "FALSE")))
+            SceneManager.showCreatures = !SceneManager.showCreatures;
 	}
+
+    static void FloorTransparencyUI(float width)
+    {
+
+        EditorGUILayout.BeginVertical();
+
+            EditorGUILayout.BeginHorizontal();
+
+                SceneManager.floorTransparencyColor = EditorGUILayout.ColorField(SceneManager.floorTransparencyColor, GUILayout.Width(30f));
+
+                SceneManager.floorTransparency = EditorGUILayout.Slider(SceneManager.floorTransparency, 0f, 1f, GUILayout.Width(width - 30f));
+
+            EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.EndVertical();
+    }
 
 }

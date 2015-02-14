@@ -32,6 +32,9 @@ public static class SceneRenderer
 		{
 			foreach(var instance in nonFiltered)
 				instance.spriteRenderer.enabled = true;
+
+            foreach (var instance in nonFiltered)
+                SetFloorTransparency(instance);
 				
 			CameraViewRenderer.UpdateObjects(sceneView.camera, nonFiltered);
 		}
@@ -80,10 +83,20 @@ public static class SceneRenderer
         if (SceneManager.showAllFloors)
 			return false;
 
-        if (instance.transform.position.z < (MapManager.currentFloor * -1))
+        if (instance.transform.position.z < MapManager.currentRealFloor)
 			return true;
 		
 		return false;
 	}
+
+    static void SetFloorTransparency(Instance instance)
+    {
+        if (instance.transform.position.z > MapManager.currentRealFloor)
+        {
+            instance.spriteRenderer.color = new Color(SceneManager.floorTransparencyColor.r, SceneManager.floorTransparencyColor.g, SceneManager.floorTransparencyColor.b, SceneManager.floorTransparency);
+        }
+        else
+            instance.spriteRenderer.color = Color.white;
+    }
 	
 }

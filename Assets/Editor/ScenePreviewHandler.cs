@@ -52,14 +52,14 @@ public static class ScenePreviewHandler
 
         switch (SceneManager.clickAction) 
 		{
-			case EditorClickAction.None:
+			case SceneClickAction.None:
 			{
 				//Set texture
 				previewRenderer.sprite = null;
 
 				break;
 			}
-			case EditorClickAction.Draw:
+			case SceneClickAction.Draw:
 			{
                 if (prefab == null || MapManager.hasMap == false || SpriteManager.hasSprites == false)
 					break;
@@ -80,7 +80,7 @@ public static class ScenePreviewHandler
 
 				break;
 			}
-			case EditorClickAction.Erase:
+			case SceneClickAction.Erase:
 			{
                 if (MapManager.hasMap == false)
 					break;

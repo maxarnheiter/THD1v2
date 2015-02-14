@@ -48,4 +48,9 @@ public class Map : MonoBehaviour
 		instances.Add(newObject.GetInstanceID(), new Instance(newObject));
 	}
 
+    public void Destroy()
+    {
+        //TODO
+    }
+
 }

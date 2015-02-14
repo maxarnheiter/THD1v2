@@ -11,12 +11,12 @@ public static class SceneClickHandler
 
         switch (SceneManager.clickAction)
 		{
-			case EditorClickAction.None:
+			case SceneClickAction.None:
 			break;
-			case EditorClickAction.Draw:
+			case SceneClickAction.Draw:
               Draw(position, MapManager.currentFloor);
 			break;
-			case EditorClickAction.Erase:
+			case SceneClickAction.Erase:
                 Erase(position, MapManager.currentFloor);
 			break;
 		}

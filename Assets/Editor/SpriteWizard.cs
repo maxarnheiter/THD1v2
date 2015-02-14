@@ -3,7 +3,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
 
-public class PrefabWizard : EditorWindow 
+public class SpriteWizard : EditorWindow 
 {
 	List<KeyValuePair<string, Texture2D>> selectionList;
 	KeyValuePair<string, Texture2D> selectionNode;
@@ -26,10 +26,10 @@ public class PrefabWizard : EditorWindow
 
 	static void Init() 
 	{
-		PrefabWizard prefabWizardWindow = (PrefabWizard)EditorWindow.GetWindow (typeof(PrefabWizard));
+		SpriteWizard prefabWizardWindow = (SpriteWizard)EditorWindow.GetWindow (typeof(SpriteWizard));
 	}
 	
-	public PrefabWizard(List<KeyValuePair<string, Texture2D>> selection)
+	public SpriteWizard(List<KeyValuePair<string, Texture2D>> selection)
 	{
 		selectionList = selection;
 		selectionNode = selection[0];

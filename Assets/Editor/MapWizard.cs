@@ -16,7 +16,7 @@ public class MapWizard : EditorWindow
 	
 	static void Init() 
 	{
-		PrefabWizard prefabWizardWindow = (PrefabWizard)EditorWindow.GetWindow (typeof(PrefabWizard));
+		SpriteWizard prefabWizardWindow = (SpriteWizard)EditorWindow.GetWindow (typeof(SpriteWizard));
 	}
 	
 	public MapWizard()
@@ -96,7 +96,10 @@ public class MapWizard : EditorWindow
 		newObject.name = newMapName;
 		
 		hasCompleted = true;
-		completionText = "Sucessfuly finished creating new map.";
+        completionText = "Sucessfuly finished creating new map.";
+
+        if (MapManager.currentMap == null)
+            MapManager.LoadFromScene();
 	}
 	
 	bool CheckForErrors()

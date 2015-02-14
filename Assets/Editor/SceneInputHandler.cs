@@ -34,7 +34,7 @@ public static class SceneInputHandler
 			}
 			case EventType.Repaint: 
 			{
-				SceneRenderer.Render(sceneView);
+				SceneManager.UpdateScene(sceneView);
 				break;
 			}
 		}

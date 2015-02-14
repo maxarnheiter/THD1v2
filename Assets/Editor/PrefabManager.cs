@@ -5,7 +5,17 @@ using System.Collections.Generic;
 
 public static class PrefabManager
 {
-    public static Prefab currentPrefab;
+    static Prefab _currentPrefab;
+    public static Prefab currentPrefab
+    {
+        get { return _currentPrefab;  }
+        set
+        {
+            if(value != null)
+                SceneManager.clickAction = SceneClickAction.Draw;
+            _currentPrefab = value;
+        }
+    }
 
     public static bool hasPrefabs;
     static PrefabCollection prefabCollection;

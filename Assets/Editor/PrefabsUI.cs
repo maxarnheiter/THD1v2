@@ -152,9 +152,6 @@ public class PrefabsUI
 		if(GUILayout.Button (prefabTexture, GUILayout.Width (prefabTexture.width + buttonPadding), GUILayout.Height (prefabTexture.height + buttonPadding)))
 		{
             PrefabManager.currentPrefab = prefabKVP.Value;
-			
-			if(SceneManager.clickAction == EditorClickAction.None)
-                SceneManager.clickAction = EditorClickAction.Draw;
 		}
 		
 		GUI.enabled = true;
