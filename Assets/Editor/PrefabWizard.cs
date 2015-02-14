@@ -183,7 +183,7 @@ public class PrefabWizard : EditorWindow
 		//Sprite Renderer
 		var spriteRenderer = newObject.AddComponent<SpriteRenderer>();
 		Sprite sprite;
-		GameEditor.spriteObjects.TryGetValue(spriteName, out sprite);
+		SpriteManager.spriteObjects.TryGetValue(spriteName, out sprite);
 		if(sprite == null)
 		{
 			Debug.Log ("Failed to fetch sprite object during prefab creation wizard. Sprite name is " + spriteName);
@@ -244,14 +244,14 @@ public class PrefabWizard : EditorWindow
 	int GetNextSetID()
 	{
 		int nextId = 0;
-	
-		if(GameEditor.prefabs == null)
+
+        if (PrefabManager.prefabs == null)
 			return nextId;
-			
-		if(GameEditor.prefabs.Count == 0)
+
+        if (PrefabManager.prefabs.Count == 0)
 			return nextId;
-			
-		nextId = GameEditor.prefabs.Max (p => p.Value.setId);
+
+        nextId = PrefabManager.prefabs.Max(p => p.Value.setId);
 		
 		return nextId + 1;
 	}
@@ -259,14 +259,14 @@ public class PrefabWizard : EditorWindow
 	int GetNextPrefabID()
 	{
 		int nextId = 0;
-		
-		if(GameEditor.prefabs == null)
+
+        if (PrefabManager.prefabs == null)
 			return nextId;
-		
-		if(GameEditor.prefabs.Count == 0)
+
+        if (PrefabManager.prefabs.Count == 0)
 			return nextId;
-		
-		nextId = GameEditor.prefabs.Max (p => p.Value.id);
+
+        nextId = PrefabManager.prefabs.Max(p => p.Value.id);
 		
 		return nextId + 1;
 	}

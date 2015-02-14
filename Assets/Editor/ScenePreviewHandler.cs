@@ -10,6 +10,10 @@ public static class ScenePreviewHandler
 
 	static Sprite eraserSprite;
 
+    static Texture2D _eraseTexture;
+    static Texture2D eraseTexture
+    { get { return _eraseTexture ?? (_eraseTexture = Resources.Load("EditorSprites/eraseTexture") as Texture2D); } }
+
 	public static void OnMove(Vector2 position)
 	{
 		if(previewObject == null)
@@ -38,15 +42,15 @@ public static class ScenePreviewHandler
 
 	static void CreateEraserSprite()
 	{
-		eraserSprite = Sprite.Create (EditorIcons.eraseTexture, new Rect (0,0,32,32), new Vector2 (1, 0), 32f);
+		eraserSprite = Sprite.Create (eraseTexture, new Rect (0,0,32,32), new Vector2 (1, 0), 32f);
 	}
 	
 	static void UpdatePreviewObject(Vector2 position)
 	{
-		var prefab = GameEditor.currentPrefab;
+        var prefab = PrefabManager.currentPrefab;
 
 
-		switch (GameEditor.clickAction) 
+        switch (SceneManager.clickAction) 
 		{
 			case EditorClickAction.None:
 			{
@@ -57,39 +61,39 @@ public static class ScenePreviewHandler
 			}
 			case EditorClickAction.Draw:
 			{
-				if(prefab == null || GameEditor.hasMap == false || GameEditor.hasSprites == false)
+                if (prefab == null || MapManager.hasMap == false || SpriteManager.hasSprites == false)
 					break;
 				
 				//Set position
-				previewObject.transform.position = new Vector3(position.x, position.y, (float)GameEditor.currentRealFloor);
+                previewObject.transform.position = new Vector3(position.x, position.y, (float)MapManager.currentRealFloor);
 				
 				//Set texture
 				if(previewRenderer.sprite == null || previewRenderer.sprite.name != prefab.spriteName)
 				{
 					Sprite sprite;
-					GameEditor.spriteObjects.TryGetValue(prefab.spriteName, out sprite);
+					SpriteManager.spriteObjects.TryGetValue(prefab.spriteName, out sprite);
 					previewRenderer.sprite = sprite;	
 				}
 
 				//Set sorting layer
-				previewRenderer.sortingLayerName = "Floor " + GameEditor.currentFloor;
+                previewRenderer.sortingLayerName = "Floor " + MapManager.currentFloor;
 
 				break;
 			}
 			case EditorClickAction.Erase:
 			{
-				if(GameEditor.hasMap == false)
+                if (MapManager.hasMap == false)
 					break;
 				
 				//Set position
-				previewObject.transform.position = new Vector3(position.x, position.y, GameEditor.currentRealFloor);
+                previewObject.transform.position = new Vector3(position.x, position.y, MapManager.currentRealFloor);
 				
 				//Set texture
 				if(previewRenderer.sprite != eraserSprite)
 					previewRenderer.sprite = eraserSprite;
 				
 				//Set sorting layer
-				previewRenderer.sortingLayerName = "Floor " + GameEditor.currentFloor;
+                previewRenderer.sortingLayerName = "Floor " + MapManager.currentFloor;
 
 				break;
 			}

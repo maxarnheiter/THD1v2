@@ -35,9 +35,9 @@ public class PrefabsUI
 	static void SidebarUI(float width)
 	{
 		if (GUILayout.Button ("Load Prefabs"))
-			GameEditor.LoadPrefabs();
-		
-		GUILayout.Label ("Prefab objects loaded: " + ((GameEditor.prefabs == null) ? "0" : GameEditor.prefabs.Count().ToString()));
+            PrefabManager.LoadPrefabs();
+
+        GUILayout.Label("Prefab objects loaded: " + ((PrefabManager.prefabs == null) ? "0" : PrefabManager.prefabs.Count().ToString()));
 		
 		EditorGUILayout.Space();
 		
@@ -80,14 +80,14 @@ public class PrefabsUI
 	{
 		GUILayout.Label ("", GUILayout.Width (width));
 
-		if(GameEditor.prefabs == null)
+        if (PrefabManager.prefabs == null)
 			return;
-		if(GameEditor.prefabs.Count <= 0)
+        if (PrefabManager.prefabs.Count <= 0)
 			return;
 		
 		size = EditorGUILayout.BeginScrollView (size);
-		
-		foreach(var set in GameEditor.prefabs.GroupBy(p => p.Value.setId))
+
+        foreach (var set in PrefabManager.prefabs.GroupBy(p => p.Value.setId))
 		{
 			DisplaySet (set.OrderBy(p => p.Value.spriteWidth), width);
 		}
@@ -138,12 +138,12 @@ public class PrefabsUI
 	
 	static void DisplayPrefabButton(KeyValuePair<int, Prefab> prefabKVP)
 	{
-		
-		if(GameEditor.currentPrefab == prefabKVP.Value)
+
+        if (PrefabManager.currentPrefab == prefabKVP.Value)
 			GUI.enabled = false;
 			
 		Texture2D prefabTexture;
-		GameEditor.spriteTextures.TryGetValue(prefabKVP.Value.spriteName, out prefabTexture);
+		SpriteManager.spriteTextures.TryGetValue(prefabKVP.Value.spriteName, out prefabTexture);
 		if(prefabTexture == null)
 		{
 			//TODO display an error texture
@@ -151,10 +151,10 @@ public class PrefabsUI
 		
 		if(GUILayout.Button (prefabTexture, GUILayout.Width (prefabTexture.width + buttonPadding), GUILayout.Height (prefabTexture.height + buttonPadding)))
 		{
-			GameEditor.currentPrefab = prefabKVP.Value;
+            PrefabManager.currentPrefab = prefabKVP.Value;
 			
-			if(GameEditor.clickAction == EditorClickAction.None)
-				GameEditor.clickAction = EditorClickAction.Draw;
+			if(SceneManager.clickAction == EditorClickAction.None)
+                SceneManager.clickAction = EditorClickAction.Draw;
 		}
 		
 		GUI.enabled = true;

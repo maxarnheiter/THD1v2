@@ -50,7 +50,7 @@ public static class MapSerializer
 		foreach(var mapObject in mapFile.mapObjects)
 		{
 			Prefab prefab;
-			GameEditor.prefabs.TryGetValue(mapObject.prefabId, out prefab);
+            PrefabManager.prefabs.TryGetValue(mapObject.prefabId, out prefab);
 			
 			if(prefab == null)
 			{

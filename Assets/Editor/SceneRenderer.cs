@@ -4,18 +4,19 @@ using System.Collections.Generic;
 
 public static class SceneRenderer
 {
+
 	public static void Render(SceneView sceneView)
 	{
-		if(!GameEditor.hasMap)
+        if (!MapManager.hasMap)
 			return;
-			
-		if(GameEditor.currentMap.instances.Count <= 0)
+
+        if (MapManager.currentMap.instances.Count <= 0)
 			return;
 			
 		var nonFiltered = new List<Instance>();
 		var filtered = new List<Instance>();
-		
-		foreach(var instanceKVP in GameEditor.currentMap.instances)
+
+        foreach (var instanceKVP in MapManager.currentMap.instances)
 		{
 			if(!IsFiltered(instanceKVP.Value))
 				nonFiltered.Add(instanceKVP.Value);
@@ -43,31 +44,31 @@ public static class SceneRenderer
 		switch(instance.prefab.prefabType)
 		{
 			case PrefabType.Ground:
-				if(!GameEditor.showGrounds)
+				if(!SceneManager.showGrounds)
 					return true;
 				break;
 			case PrefabType.Corner:
-				if(!GameEditor.showCorners)
+                if (!SceneManager.showCorners)
 					return true;
 				break;
 			case PrefabType.Thing:
-				if(!GameEditor.showThings)
+                if (!SceneManager.showThings)
 					return true;
 				break;
 			case PrefabType.Item:
-				if(!GameEditor.showItems)
+                if (!SceneManager.showItems)
 					return true;
 				break;
 			case PrefabType.Player:
-				if(!GameEditor.showCreatures)
+                if (!SceneManager.showCreatures)
 					return true;
 				break;
 			case PrefabType.Monster:
-				if(!GameEditor.showCreatures)
+                if (!SceneManager.showCreatures)
 					return true;
 				break;
 			case PrefabType.NPC:
-				if(!GameEditor.showCreatures)
+                if (!SceneManager.showCreatures)
 					return true;
 				break;
 			default:
@@ -76,10 +77,10 @@ public static class SceneRenderer
 		}
 		
 		//Filter by Floor
-		if(GameEditor.showAllFloors)
+        if (SceneManager.showAllFloors)
 			return false;
-		
-		if(instance.transform.position.z < (GameEditor.currentFloor * -1))
+
+        if (instance.transform.position.z < (MapManager.currentFloor * -1))
 			return true;
 		
 		return false;

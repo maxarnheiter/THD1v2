@@ -5,6 +5,25 @@ using System.Collections;
 public static class QuickbarUI 
 {
 
+    static Texture2D _pencilIcon;
+    static Texture2D pencilIcon
+    { get { return _pencilIcon ?? (_pencilIcon = Resources.Load("EditorSprites/pencil") as Texture2D); } }
+
+
+    static Texture2D _eraserIcon;
+    static Texture2D eraserIcon
+    { get { return _eraserIcon ?? (_eraserIcon = Resources.Load("EditorSprites/eraser") as Texture2D); } }
+
+
+    static Texture2D _upIcon;
+    static Texture2D upIcon
+    { get { return _upIcon ?? (_upIcon = Resources.Load("EditorSprites/up") as Texture2D); } }
+
+
+    static Texture2D _downIcon;
+    static Texture2D downIcon
+    { get { return _downIcon ?? (_downIcon = Resources.Load("EditorSprites/down") as Texture2D); } }
+
 	public static void Display(float width)
 	{
 		EditorGUILayout.BeginVertical ();
@@ -31,27 +50,27 @@ public static class QuickbarUI
 		
 		GUILayout.FlexibleSpace ();
 		
-		if (GameEditor.clickAction == EditorClickAction.None)
+		if (SceneManager.clickAction == EditorClickAction.None)
 			GUI.enabled = false;
 		if(GUILayout.Button ("None", GUILayout.Width(50f)))
 		{
-			GameEditor.clickAction = EditorClickAction.None;
+            SceneManager.clickAction = EditorClickAction.None;
 		}
 		GUI.enabled = true;
-		
-		if (GameEditor.clickAction == EditorClickAction.Erase)
+
+        if (SceneManager.clickAction == EditorClickAction.Erase)
 			GUI.enabled = false;
-		if (GUILayout.Button (EditorIcons.eraserIcon, GUILayout.Width (50f))) 
+		if (GUILayout.Button (eraserIcon, GUILayout.Width (50f))) 
 		{
-			GameEditor.clickAction = EditorClickAction.Erase;
+            SceneManager.clickAction = EditorClickAction.Erase;
 		}
 		GUI.enabled = true;
-		
-		if (GameEditor.clickAction == EditorClickAction.Draw)
+
+        if (SceneManager.clickAction == EditorClickAction.Draw)
 			GUI.enabled = false;
-		if (GUILayout.Button (EditorIcons.pencilIcon, GUILayout.Width (50f))) 
+		if (GUILayout.Button (pencilIcon, GUILayout.Width (50f))) 
 		{
-			GameEditor.clickAction = EditorClickAction.Draw;
+            SceneManager.clickAction = EditorClickAction.Draw;
 		}
 		GUI.enabled = true;
 		
@@ -66,11 +85,11 @@ public static class QuickbarUI
 
 			GUILayout.FlexibleSpace ();
 
-			if (!GameEditor.hasMap)
+            if (!MapManager.hasMap)
 					GUI.enabled = false;
-			if (GUILayout.Button (EditorIcons.upIcon, GUILayout.Width (50f))) 
+			if (GUILayout.Button (upIcon, GUILayout.Width (50f))) 
 			{
-				GameEditor.FloorUp();
+                MapManager.FloorUp();
 			}
 			GUI.enabled = true;
 
@@ -80,8 +99,8 @@ public static class QuickbarUI
 		EditorGUILayout.BeginHorizontal ();
 			
 			GUILayout.FlexibleSpace ();
-			
-			GUILayout.Label ("Floor " + ((GameEditor.hasMap == true) ? GameEditor.currentFloor.ToString() : "NA"));
+
+            GUILayout.Label("Floor " + ((MapManager.hasMap == true) ? MapManager.currentFloor.ToString() : "NA"));
 			
 			GUILayout.FlexibleSpace ();
 		
@@ -89,12 +108,12 @@ public static class QuickbarUI
 		EditorGUILayout.BeginHorizontal ();
 		
 			GUILayout.FlexibleSpace ();
-			
-			if (!GameEditor.hasMap)
+
+            if (!MapManager.hasMap)
 				GUI.enabled = false;
-			if (GUILayout.Button (EditorIcons.downIcon, GUILayout.Width (50f))) 
+			if (GUILayout.Button (downIcon, GUILayout.Width (50f))) 
 			{
-				GameEditor.FloorDown();
+                MapManager.FloorDown();
 			}
 			GUI.enabled = true;
 			
@@ -118,96 +137,96 @@ public static class QuickbarUI
 		
 		EditorGUILayout.BeginHorizontal ();
 		
-			if(!GameEditor.showAllFloors)
+			if(!SceneManager.showAllFloors)
 				GUILayout.FlexibleSpace();
 			
 			if(GUILayout.Button ("Top Floors", GUILayout.Width (width / 2)))
 			{
-				GameEditor.showAllFloors =! GameEditor.showAllFloors;
+                SceneManager.showAllFloors = !SceneManager.showAllFloors;
 				SceneView.RepaintAll();
 			}
-			
-			if(GameEditor.showAllFloors)
+
+            if (SceneManager.showAllFloors)
 				GUILayout.FlexibleSpace();
 		
 		EditorGUILayout.EndHorizontal ();
 
 		EditorGUILayout.BeginHorizontal ();
-		
-			if(!GameEditor.showGrounds)
+
+        if (!SceneManager.showGrounds)
 				GUILayout.FlexibleSpace();
 				
 			if(GUILayout.Button ("Grounds", GUILayout.Width (width / 2)))
 			{
-				GameEditor.showGrounds =! GameEditor.showGrounds;
+                SceneManager.showGrounds = !SceneManager.showGrounds;
 				SceneView.RepaintAll();
 			}
-				
-			if(GameEditor.showGrounds)
+
+            if (SceneManager.showGrounds)
 				GUILayout.FlexibleSpace();
 			
 		EditorGUILayout.EndHorizontal ();
 		
 		EditorGUILayout.BeginHorizontal ();
-		
-			if(!GameEditor.showCorners)
+
+        if (!SceneManager.showCorners)
 				GUILayout.FlexibleSpace();
 			
 			if(GUILayout.Button ("Corners", GUILayout.Width (width / 2)))
 			{
-				GameEditor.showCorners =! GameEditor.showCorners;
+                SceneManager.showCorners = !SceneManager.showCorners;
 				SceneView.RepaintAll();
 			}
-			
-			if(GameEditor.showCorners)
+
+            if (SceneManager.showCorners)
 				GUILayout.FlexibleSpace();
 		
 		EditorGUILayout.EndHorizontal ();
 		
 		EditorGUILayout.BeginHorizontal ();
-		
-			if(!GameEditor.showThings)
+
+            if (!SceneManager.showThings)
 				GUILayout.FlexibleSpace();
 			
 			if(GUILayout.Button ("Things", GUILayout.Width (width / 2)))
 			{
-				GameEditor.showThings =! GameEditor.showThings;
+                SceneManager.showThings = !SceneManager.showThings;
 				SceneView.RepaintAll();
 			}
-			
-			if(GameEditor.showThings)
+
+            if (SceneManager.showThings)
 				GUILayout.FlexibleSpace();
 		
 		EditorGUILayout.EndHorizontal ();
 		
 		EditorGUILayout.BeginHorizontal ();
-		
-			if(!GameEditor.showItems)
+
+            if (!SceneManager.showItems)
 				GUILayout.FlexibleSpace();
 			
 			if(GUILayout.Button ("Items", GUILayout.Width (width / 2)))
 			{
-				GameEditor.showItems =! GameEditor.showItems;
+                SceneManager.showItems = !SceneManager.showItems;
 				SceneView.RepaintAll();
 			}
-			
-			if(GameEditor.showItems)
+
+            if (SceneManager.showItems)
 				GUILayout.FlexibleSpace();
 		
 		EditorGUILayout.EndHorizontal ();
 		
 		EditorGUILayout.BeginHorizontal ();
-		
-			if(!GameEditor.showCreatures)
+
+            if (!SceneManager.showCreatures)
 				GUILayout.FlexibleSpace();
 			
 			if(GUILayout.Button ("Creatures", GUILayout.Width (width / 2)))
 			{
-				GameEditor.showCreatures =! GameEditor.showCreatures;
+                SceneManager.showCreatures = !SceneManager.showCreatures;
 				SceneView.RepaintAll();
 			}
-			
-			if(GameEditor.showCreatures)
+
+            if (SceneManager.showCreatures)
 				GUILayout.FlexibleSpace();
 		
 		EditorGUILayout.EndHorizontal ();

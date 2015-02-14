@@ -6,25 +6,25 @@ public static class SceneClickHandler
 
 	public static void OnClick(Vector2 position)
 	{
-		if(!GameEditor.hasMap || !GameEditor.hasPrefabs)
+        if (!MapManager.hasMap || !PrefabManager.hasPrefabs)
 			return;
-			
-		switch(GameEditor.clickAction)
+
+        switch (SceneManager.clickAction)
 		{
 			case EditorClickAction.None:
 			break;
 			case EditorClickAction.Draw:
-				Draw (position, GameEditor.currentFloor);
+              Draw(position, MapManager.currentFloor);
 			break;
 			case EditorClickAction.Erase:
-				Erase (position, GameEditor.currentFloor);
+                Erase(position, MapManager.currentFloor);
 			break;
 		}
 	}
 	
 	static void Draw(Vector2 position, int floor)
 	{
-		GameEditor.currentMap.Instantiate(GameEditor.currentPrefab, position, floor);
+        MapManager.currentMap.Instantiate(PrefabManager.currentPrefab, position, floor);
 	}
 	
 	static void Erase(Vector2 position, int floor)

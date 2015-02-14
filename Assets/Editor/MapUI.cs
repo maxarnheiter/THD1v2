@@ -33,39 +33,39 @@ public static class MapUI
 
 		EditorGUILayout.BeginHorizontal();
 		
-			if(GameEditor.currentMap != null)
+			if(MapManager.currentMap != null)
 				GUI.enabled = false;
 			if(GUILayout.Button ("Create New Map", GUILayout.Width(width / 2f)))
 			{
-				GameEditor.CreateNewMap();
+				MapManager.CreateNewMap();
 			}
 			GUI.enabled = true;
-			
-			if(GameEditor.currentMap == null)
+
+            if (MapManager.currentMap == null)
 				GUI.enabled = false;
 			if(GUILayout.Button ("Save Map", GUILayout.Width(width / 2f)))
 			{
-				GameEditor.SaveMap();
+                MapManager.SaveMap();
 			}
 			GUI.enabled = true;
 			
 		EditorGUILayout.EndHorizontal();
 		
 		EditorGUILayout.BeginHorizontal();
-		
-			if(GameEditor.currentMap != null)
+
+            if (MapManager.currentMap != null)
 				GUI.enabled = false;
 			if(GUILayout.Button("Load From Scene", GUILayout.Width(width / 2f)))
 			{
-				GameEditor.LoadFromScene();
+                MapManager.LoadFromScene();
 			}
 			GUI.enabled = true;
-			
-			if(GameEditor.currentMap != null)
+
+            if (MapManager.currentMap != null)
 				GUI.enabled = false;
 			if(GUILayout.Button("Load From File", GUILayout.Width(width / 2f)))
 			{
-				GameEditor.LoadMap();
+                MapManager.LoadMap();
 			}
 			GUI.enabled = true;
 			
@@ -74,10 +74,11 @@ public static class MapUI
 	
 	static void MapStatisticsUI(float width)
 	{
-		GUILayout.Label ("Current Map: " + ((GameEditor.currentMap == null) ? "NA" : GameEditor.currentMap.name), GUILayout.Width (width));
-		GUILayout.Label ("Current Floor: " + ((GameEditor.currentFloor == null) ? "NA" : GameEditor.currentFloor.ToString()), GUILayout.Width (width));
-		GUILayout.Label ("Highest floor: " + ((GameEditor.currentMap == null) ? "NA" : GameEditor.currentMap.highestFloor.ToString()), GUILayout.Width (width));
-		GUILayout.Label ("Lowest floor: " + ((GameEditor.currentMap == null) ? "NA" : GameEditor.currentMap.lowestFloor.ToString()), GUILayout.Width (width));
+        GUILayout.Label("Current Map: " + ((MapManager.currentMap == null) ? "NA" : MapManager.currentMap.name), GUILayout.Width(width));
+        GUILayout.Label("Current Floor: " + ((MapManager.currentFloor == null) ? "NA" : MapManager.currentFloor.ToString()), GUILayout.Width(width));
+        GUILayout.Label("Highest floor: " + ((MapManager.currentMap == null) ? "NA" : MapManager.currentMap.highestFloor.ToString()), GUILayout.Width(width));
+        GUILayout.Label("Lowest floor: " + ((MapManager.currentMap == null) ? "NA" : MapManager.currentMap.lowestFloor.ToString()), GUILayout.Width(width));
 		
 	}
+
 }

@@ -10,6 +10,8 @@ public static class SpritesUI
 	
 	static bool showOnlyUnused;
 
+    static List<KeyValuePair<string, Texture2D>> spriteSelection;
+
 	public static void Display(float width)
 	{
 		var sidebarWidth = 250;
@@ -31,29 +33,28 @@ public static class SpritesUI
 	static void SidebarUI(float width)
 	{
 		if (GUILayout.Button ("Load Sprites"))
-			GameEditor.LoadSprites();
+            SpriteManager.LoadSprites();
 
-		GUILayout.Label ("Sprite objects loaded: " + ((GameEditor.spriteObjects == null) ? "0" : GameEditor.spriteObjects.Count().ToString()));
+        GUILayout.Label("Sprite objects loaded: " + ((SpriteManager.spriteObjects == null) ? "0" : SpriteManager.spriteObjects.Count().ToString()));
 
-		GUILayout.Label ("Sprite textures loaded: " + ((GameEditor.spriteTextures == null) ? "0" : GameEditor.spriteTextures.Count().ToString()));
+        GUILayout.Label("Sprite textures loaded: " + ((SpriteManager.spriteTextures == null) ? "0" : SpriteManager.spriteTextures.Count().ToString()));
 		
-		GUILayout.Label ("Sprites selected: " + ((GameEditor.spriteSelection == null) ? "0" : GameEditor.spriteSelection.Count().ToString()));
+		GUILayout.Label ("Sprites selected: " + ((spriteSelection == null) ? "0" : spriteSelection.Count().ToString()));
 		
 		EditorGUILayout.BeginHorizontal();
 		
-		if(GameEditor.spriteSelection == null || GameEditor.spriteSelection.Count <= 0)
+		if(spriteSelection == null || spriteSelection.Count <= 0)
 			GUI.enabled = false;
 		if(GUILayout.Button ("Clear Selection"))
-			GameEditor.spriteSelection = new List<KeyValuePair<string, Texture2D>>();
+			spriteSelection = new List<KeyValuePair<string, Texture2D>>();
 		GUI.enabled = true;
 		
-		if(GameEditor.spriteSelection == null || GameEditor.spriteSelection.Count <= 0)
+		if(spriteSelection == null || spriteSelection.Count <= 0)
 			GUI.enabled = false;
 		if(GUILayout.Button ("Open Prefab Wizard"))
 		{
-		 	var wizard =  new PrefabWizard(GameEditor.spriteSelection);
-		 	wizard.Show();
-		 	GameEditor.spriteSelection = null;
+            SpriteManager.OpenPrefabWizard(spriteSelection);
+            spriteSelection.Clear();
 		 }
 		GUI.enabled = true;
 		
@@ -68,16 +69,16 @@ public static class SpritesUI
 	{
 		GUILayout.Label ("", GUILayout.Width (width));
 
-		if(GameEditor.spriteTextures == null)
+        if (SpriteManager.spriteTextures == null)
 			return;
-		if(GameEditor.spriteTextures.Count <= 0)
+        if (SpriteManager.spriteTextures.Count <= 0)
 			return;
 	
 		size = EditorGUILayout.BeginScrollView (size);
 		int currentWidth = 0;
 		
 		EditorGUILayout.BeginHorizontal();
-		foreach(var spriteKVP in GameEditor.spriteTextures)
+        foreach (var spriteKVP in SpriteManager.spriteTextures)
 		{
 			if(currentWidth >= width)
 			{
@@ -98,15 +99,15 @@ public static class SpritesUI
 	
 	static void DisplaySpriteButton(KeyValuePair<string, Texture2D> spriteKVP)
 	{
-		if(GameEditor.spriteSelection == null)
-			GameEditor.spriteSelection = new List<KeyValuePair<string, Texture2D>>();
+		if(spriteSelection == null)
+			spriteSelection = new List<KeyValuePair<string, Texture2D>>();
 	
-		if(GameEditor.spriteSelection.Contains(spriteKVP))
+		if(spriteSelection.Contains(spriteKVP))
 			GUI.enabled = false;
 	
 		if(GUILayout.Button (spriteKVP.Value, GUILayout.Width (spriteKVP.Value.width + buttonPadding), GUILayout.Height (spriteKVP.Value.height + buttonPadding)))
 		{
-			GameEditor.spriteSelection.Add(spriteKVP);
+			spriteSelection.Add(spriteKVP);
 		}
 		
 		GUI.enabled = true;
@@ -116,11 +117,11 @@ public static class SpritesUI
 	{
 		if(!showOnlyUnused)
 			return false;
-			
-		if(!GameEditor.hasPrefabs)
+
+        if (!PrefabManager.hasPrefabs)
 			return false;
-			
-		if(GameEditor.prefabs.Any(p => p.Value.spriteName == spriteKVP.Key))
+
+        if (PrefabManager.prefabs.Any(p => p.Value.spriteName == spriteKVP.Key))
 			return true;
 			
 		return false;

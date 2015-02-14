@@ -21,21 +21,21 @@ public static class EditorInitializer
 		if(!loadSprites)
 		{
 			loadSprites = true;
-			GameEditor.LoadSprites();
+			SpriteManager.LoadSprites();
 		}
 		
 		if(EditorApplication.timeSinceStartup > 5)
 		if(!loadPrefabs)
 		{
 			loadPrefabs = true;
-			GameEditor.LoadPrefabs();
+			PrefabManager.LoadPrefabs();
 		}
 		
 		if(EditorApplication.timeSinceStartup > 5)
 		if(!loadMapFromScene)
 		{
 			loadMapFromScene = true;
-			GameEditor.LoadFromScene();
+			MapManager.LoadFromScene();
 		}
 	}
 	
