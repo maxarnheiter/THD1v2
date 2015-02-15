@@ -5,6 +5,14 @@ using System.Collections;
 public static class QuickbarUI 
 {
 
+    static float allFloorsButtonWidth = 115f;
+    static float groundsButtonWidth = 115f;
+    static float cornersButtonWidth = 115f;
+    static float thingsButtonWidth = 115f;
+    static float itemsButtonWidth = 115f;
+    static float creaturesButtonWidth = 115f;
+
+
     static Texture2D _pencilIcon;
     static Texture2D pencilIcon
     { get { return _pencilIcon ?? (_pencilIcon = Resources.Load("EditorSprites/pencil") as Texture2D); } }
@@ -127,23 +135,47 @@ public static class QuickbarUI
 	
 	static void MapVisibilityUI(float width)
 	{
-        if(GUILayout.Button("Top Floors: " + ((SceneManager.showAllFloors == true) ? "TRUE" : "FALSE")))
-            SceneManager.showAllFloors = !SceneManager.showAllFloors;
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+            if (GUILayout.Button("Top Floors: " + ((SceneManager.showAllFloors == true) ? "TRUE" : "FALSE"), GUILayout.Width(allFloorsButtonWidth)))
+                SceneManager.showAllFloors = !SceneManager.showAllFloors;
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
 
-        if (GUILayout.Button("Grounds: " + ((SceneManager.showGrounds == true) ? "TRUE" : "FALSE")))
-            SceneManager.showGrounds = !SceneManager.showGrounds;
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+            if (GUILayout.Button("Grounds: " + ((SceneManager.showGrounds == true) ? "TRUE" : "FALSE"), GUILayout.Width(groundsButtonWidth)))
+                SceneManager.showGrounds = !SceneManager.showGrounds;
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
 
-        if (GUILayout.Button("Corners: " + ((SceneManager.showCorners == true) ? "TRUE" : "FALSE")))
-            SceneManager.showCorners = !SceneManager.showCorners;
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+            if (GUILayout.Button("Corners: " + ((SceneManager.showCorners == true) ? "TRUE" : "FALSE"), GUILayout.Width(cornersButtonWidth)))
+                SceneManager.showCorners = !SceneManager.showCorners;
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
 
-        if (GUILayout.Button("Items: " + ((SceneManager.showItems == true) ? "TRUE" : "FALSE")))
-            SceneManager.showItems = !SceneManager.showItems;
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+            if (GUILayout.Button("Items: " + ((SceneManager.showItems == true) ? "TRUE" : "FALSE"), GUILayout.Width(itemsButtonWidth)))
+                SceneManager.showItems = !SceneManager.showItems;
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
 
-        if (GUILayout.Button("Things: " + ((SceneManager.showThings == true) ? "TRUE" : "FALSE")))
-            SceneManager.showThings = !SceneManager.showThings;
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+            if (GUILayout.Button("Things: " + ((SceneManager.showThings == true) ? "TRUE" : "FALSE"), GUILayout.Width(thingsButtonWidth)))
+                SceneManager.showThings = !SceneManager.showThings;
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
 
-        if (GUILayout.Button("Creatures: " + ((SceneManager.showCreatures == true) ? "TRUE" : "FALSE")))
-            SceneManager.showCreatures = !SceneManager.showCreatures;
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+            if (GUILayout.Button("Creatures: " + ((SceneManager.showCreatures == true) ? "TRUE" : "FALSE"), GUILayout.Width(creaturesButtonWidth)))
+                SceneManager.showCreatures = !SceneManager.showCreatures;
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
 	}
 
     static void FloorTransparencyUI(float width)

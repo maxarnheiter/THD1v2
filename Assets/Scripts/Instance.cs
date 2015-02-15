@@ -18,4 +18,21 @@ public class Instance
 		this.stack = obj.GetComponent<Stack>();
 		this.spriteRenderer = obj.GetComponent<SpriteRenderer>();
 	}
+
+    public int TypeToInt()
+    {
+        switch (this.prefab.prefabType)
+        {
+            case PrefabType.Ground:
+                return 0;
+                break;
+            case PrefabType.Corner:
+                return 1;
+                break;
+            default:
+                return 2;
+                break;
+        }
+        return 2;
+    }
 }

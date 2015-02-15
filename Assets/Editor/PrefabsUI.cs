@@ -13,11 +13,26 @@ public class PrefabsUI
 	static PrefabCategory categoryFilter = PrefabCategory.Any;
 	static PrefabColor colorFilter = PrefabColor.Any;
 	
+    enum ClickAction
+    {
+        SetAsCurrent,
+        ChangeSetId,
+        ChangeType,
+        ChangeCategory,
+        ChangeColor
+    }
+    static ClickAction clickAction;
+
+    static int nextSetId;
+    static PrefabType nextPrefabType;
+    static PrefabCategory nextPrefabCategory;
+    static PrefabColor nextPrefabColor;
+
 	
 	public static void Display(float width)
 	{
-		var sidebarWidth = 250;
-		var scrollviewWidth = width - sidebarWidth - 10;
+		var sidebarWidth = 250f;
+        var scrollviewWidth = width - sidebarWidth - 10;
 		
 		EditorGUILayout.BeginHorizontal ();
 		
@@ -34,47 +49,158 @@ public class PrefabsUI
 	
 	static void SidebarUI(float width)
 	{
-		if (GUILayout.Button ("Load Prefabs"))
+        PrefabLoadingUI(width);
+
+        PrefabViewFilterUI(width);
+
+        PrefabSelectionUI(width);
+
+        PrefabSelectionSpecificUI(width);
+	}
+
+    static void PrefabLoadingUI(float width)
+    {
+        if (GUILayout.Button("Load Prefabs"))
             PrefabManager.LoadPrefabs();
 
         GUILayout.Label("Prefab objects loaded: " + ((PrefabManager.prefabs == null) ? "0" : PrefabManager.prefabs.Count().ToString()));
-		
-		EditorGUILayout.Space();
-		
-		EditorGUILayout.BeginHorizontal();
-		
-		GUILayout.Label("Type:", GUILayout.Width (65f));
-		
-		typeFilter = (PrefabType)EditorGUILayout.EnumPopup(typeFilter, GUILayout.Width (110f));
-		
-		if(GUILayout.Button ("Reset",GUILayout.Width (50f)))
-			categoryFilter = PrefabCategory.Any;
-		
-		EditorGUILayout.EndHorizontal ();
-		
-		EditorGUILayout.BeginHorizontal();
-		
-		GUILayout.Label("Category:", GUILayout.Width (65f));
-		
-		categoryFilter = (PrefabCategory)EditorGUILayout.EnumPopup(categoryFilter, GUILayout.Width (110f));
-		
-		if(GUILayout.Button ("Reset",GUILayout.Width (50f)))
-			categoryFilter = PrefabCategory.Any;
-		
-		EditorGUILayout.EndHorizontal ();
-		
-		EditorGUILayout.BeginHorizontal();
-		
-		GUILayout.Label("Color:", GUILayout.Width (65f));
-		
-		colorFilter = (PrefabColor)EditorGUILayout.EnumPopup(colorFilter, GUILayout.Width (110f));
-		
-		if(GUILayout.Button ("Reset",GUILayout.Width (50f)))
-			colorFilter = PrefabColor.Any;
-		
-		EditorGUILayout.EndHorizontal ();
-		
-	}
+
+        EditorGUILayout.Space();
+    }
+
+    static void PrefabViewFilterUI(float width)
+    {
+        EditorGUILayout.BeginHorizontal();
+
+        GUILayout.Label("Type:", GUILayout.Width(65f));
+
+        typeFilter = (PrefabType)EditorGUILayout.EnumPopup(typeFilter, GUILayout.Width(90f));
+
+        if (GUILayout.Button("Reset", GUILayout.Width(45f)))
+            categoryFilter = PrefabCategory.Any;
+
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+
+        GUILayout.Label("Category:", GUILayout.Width(65f));
+
+        categoryFilter = (PrefabCategory)EditorGUILayout.EnumPopup(categoryFilter, GUILayout.Width(90f));
+
+        if (GUILayout.Button("Reset", GUILayout.Width(45f)))
+            categoryFilter = PrefabCategory.Any;
+
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+
+        GUILayout.Label("Color:", GUILayout.Width(65f));
+
+        colorFilter = (PrefabColor)EditorGUILayout.EnumPopup(colorFilter, GUILayout.Width(90f));
+
+        if (GUILayout.Button("Reset", GUILayout.Width(45f)))
+            colorFilter = PrefabColor.Any;
+
+        EditorGUILayout.EndHorizontal();
+    }
+
+    static void PrefabSelectionUI(float width)
+    {
+        EditorGUILayout.Space();
+
+        EditorGUILayout.BeginHorizontal();
+
+            if (clickAction == ClickAction.SetAsCurrent)
+                GUI.enabled = false;
+            if (GUILayout.Button("Select"))
+                clickAction = ClickAction.SetAsCurrent;
+            GUI.enabled = true;
+
+            if (clickAction == ClickAction.ChangeSetId)
+                GUI.enabled = false;
+            if (GUILayout.Button("SetID"))
+                clickAction = ClickAction.ChangeSetId;
+            GUI.enabled = true;
+
+            if (clickAction == ClickAction.ChangeType)
+                GUI.enabled = false;
+            if (GUILayout.Button("Type"))
+                clickAction = ClickAction.ChangeType;
+            GUI.enabled = true;
+
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+
+            if (clickAction == ClickAction.ChangeCategory)
+                GUI.enabled = false;
+            if (GUILayout.Button("Category"))
+                clickAction = ClickAction.ChangeCategory;
+            GUI.enabled = true;
+
+            if (clickAction == ClickAction.ChangeColor)
+                GUI.enabled = false;
+            if (GUILayout.Button("Color"))
+                clickAction = ClickAction.ChangeColor;
+            GUI.enabled = true;
+
+        EditorGUILayout.EndHorizontal();
+    }
+
+    static void PrefabSelectionSpecificUI(float width)
+    {
+        EditorGUILayout.Space();
+        EditorGUILayout.BeginHorizontal();
+
+            switch(clickAction)
+            {
+                case ClickAction.SetAsCurrent:
+                {
+                    GUILayout.FlexibleSpace();
+
+                    if(PrefabManager.currentPrefab != null)
+                    {
+                        Texture2D texture;
+                        SpriteManager.spriteTextures.TryGetValue(PrefabManager.currentPrefab.spriteName, out texture);
+                        GUILayout.Button(texture, GUILayout.Width(texture.width + buttonPadding), GUILayout.Height(texture.height + buttonPadding));
+                    }
+
+                    GUILayout.FlexibleSpace();
+
+                    break;
+                }
+                case ClickAction.ChangeSetId:
+                {
+                    GUILayout.Label("Set ID: ");
+
+                    nextSetId = EditorGUILayout.IntField(nextSetId);
+
+                    if(GUILayout.Button("Get Next"))
+                    {
+                        nextSetId = PrefabManager.prefabs.Max(p => p.Value.setId) + 1;
+                    }
+
+                    break;
+                }
+                case ClickAction.ChangeType:
+                {
+                    nextPrefabType = (PrefabType)EditorGUILayout.EnumPopup("Prefab Type ", nextPrefabType);
+                    break;
+                }
+                case ClickAction.ChangeCategory:
+                {
+                    nextPrefabCategory = (PrefabCategory)EditorGUILayout.EnumPopup("Prefab Category ", nextPrefabCategory);
+                    break;
+                }
+                case ClickAction.ChangeColor:
+                {
+                    nextPrefabColor = (PrefabColor)EditorGUILayout.EnumPopup("Prefab Color ", nextPrefabColor);
+                    break;
+                }
+            }
+
+        EditorGUILayout.EndHorizontal();
+    }
 	
 	static void ScrollviewUI(float width)
 	{
@@ -91,9 +217,7 @@ public class PrefabsUI
 		{
 			DisplaySet (set.OrderBy(p => p.Value.spriteWidth), width);
 		}
-	
-		
-		
+
 		EditorGUILayout.EndScrollView ();
 	}
 	
@@ -148,12 +272,46 @@ public class PrefabsUI
 		{
 			//TODO display an error texture
 		}
-		
-		if(GUILayout.Button (prefabTexture, GUILayout.Width (prefabTexture.width + buttonPadding), GUILayout.Height (prefabTexture.height + buttonPadding)))
-		{
-            PrefabManager.currentPrefab = prefabKVP.Value;
-		}
+
+        if (GUILayout.Button(prefabTexture, GUILayout.Width(prefabTexture.width + buttonPadding), GUILayout.Height(prefabTexture.height + buttonPadding)))
+            OnPrefabButtonPressed(prefabKVP.Value);
 		
 		GUI.enabled = true;
 	}
+
+    static void OnPrefabButtonPressed(Prefab prefab)
+    {
+        switch (clickAction)
+        {
+            case ClickAction.SetAsCurrent:
+            {
+                PrefabManager.currentPrefab = prefab;
+                break;
+            }
+            case ClickAction.ChangeSetId:
+            {
+                prefab.setId = nextSetId;
+                EditorUtility.SetDirty(prefab);
+                break;
+            }
+            case ClickAction.ChangeType:
+            {
+                prefab.prefabType = nextPrefabType;
+                EditorUtility.SetDirty(prefab); 
+                break;
+            }
+            case ClickAction.ChangeCategory:
+            {
+                prefab.prefabCategory = nextPrefabCategory;
+                EditorUtility.SetDirty(prefab);    
+                break;
+            }
+            case ClickAction.ChangeColor:
+            {
+                prefab.prefabColor = nextPrefabColor;
+                EditorUtility.SetDirty(prefab);
+                break;
+            }
+        }
+    }
 }

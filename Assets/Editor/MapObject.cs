@@ -15,12 +15,12 @@ public class MapObject
 	public MapObject()
 	{}
 	
-	public MapObject(Instance instance)
+	public MapObject(int prefabId, Vector3 position)
 	{
-		this.prefabId = instance.prefab.id;
-		this.x = instance.transform.position.x;
-		this.y = instance.transform.position.y;
-		this.floor = (int)instance.transform.position.z * -1;
+        this.prefabId = prefabId;
+		this.x = position.x;
+		this.y = position.y;
+		this.floor = (int)position.z * -1;
 	}
 	
 }

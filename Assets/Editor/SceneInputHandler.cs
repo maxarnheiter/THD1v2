@@ -25,6 +25,8 @@ public static class SceneInputHandler
 			case EventType.MouseDrag:
 			{
 				SceneClickHandler.OnClick(GetMousePosition(sceneView, current));
+                current.Use();
+                ScenePreviewHandler.OnMove(GetMousePosition(sceneView, current));
 				break;
 			}
 			case EventType.MouseMove: 

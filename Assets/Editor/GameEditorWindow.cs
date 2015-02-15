@@ -32,7 +32,7 @@ public class GameEditorWindow : EditorWindow
 
     void Display(float width)
     {
-        float quickbarUIWidth = 170f;
+        float quickbarUIWidth = 190f;
         float selectionUIWidth = width - quickbarUIWidth;
 
         EditorGUILayout.BeginHorizontal();

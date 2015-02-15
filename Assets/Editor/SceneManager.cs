@@ -83,7 +83,7 @@ public static class SceneManager
 
     public static SceneClickAction clickAction;
 
-    static float _floorTransparency = 0.5f;
+    static float _floorTransparency = 0.2f;
     public static float floorTransparency
     {
         get { return _floorTransparency; }
@@ -94,7 +94,7 @@ public static class SceneManager
         }
     }
 
-    static Color _floorTransparencyColor = Color.blue;
+    static Color _floorTransparencyColor = Color.white;
     public static Color floorTransparencyColor
     {
         get { return _floorTransparencyColor; }

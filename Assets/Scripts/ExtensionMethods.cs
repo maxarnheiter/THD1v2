@@ -4,6 +4,8 @@ using System.Collections;
 public static class ExtensionMethods 
 {
 	
+
+
 	public static Texture2D GetSpriteTexture(this Sprite sprite) 
 	{
 		var texture = new Texture2D ((int)sprite.rect.width, (int)sprite.rect.height);

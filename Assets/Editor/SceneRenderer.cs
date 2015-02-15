@@ -10,13 +10,13 @@ public static class SceneRenderer
         if (!MapManager.hasMap)
 			return;
 
-        if (MapManager.currentMap.instances.Count <= 0)
+        if (InstanceManager.instances.Count <= 0)
 			return;
 			
 		var nonFiltered = new List<Instance>();
 		var filtered = new List<Instance>();
 
-        foreach (var instanceKVP in MapManager.currentMap.instances)
+        foreach (var instanceKVP in InstanceManager.instances)
 		{
 			if(!IsFiltered(instanceKVP.Value))
 				nonFiltered.Add(instanceKVP.Value);

@@ -57,27 +57,11 @@ public static class CameraViewRenderer
 	static List<Instance> Sort(List<Instance> instances)
 	{
 		return instances.OrderByDescending(i => i.transform.position.z)	
-				.ThenBy(i => TypeToInt(i.prefab.prefabType))
+				.ThenBy(i => i.TypeToInt())
 				.ThenByDescending(i => i.transform.position.y)			
 				.ThenBy(i => i.transform.position.x)				
-				.ThenBy(i => i.stack.id).ToList();
-	}
-	
-	static int TypeToInt(PrefabType prefabType)
-	{
-		switch(prefabType)
-		{
-			case PrefabType.Ground:
-				return 0;
-				break;
-			case PrefabType.Corner:
-				return 1;
-				break;
-			default:
-				return 2;
-				break;
-		}
-		return 2;
+				.ThenBy(i => i.stack.id)
+                .ToList();
 	}
 	
 	static Rect GetVisibleRect(Camera camera)
